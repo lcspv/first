@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#game {
+    width: 320px;
+    height: 480px;
+    background: url("../img/game_bg.jpg") no-repeat;
+    margin: 100px auto 0;
+    position: relative;
+}
+
+#score {
+    height: 46px;
+    color: white;
+    line-height: 46px;
+    text-indent: 62px;
+}
+
+#time {
+    width: 180px;
+    height: 16px;
+    background: url("../img/progress.png") no-repeat;
+    position: absolute;
+    left: 63px;
+    top: 66px;
+}
+
+#menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+
+#start {
+    width: 4em;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 1em;
+    color: aqua;
+    text-shadow: 0 0 20px yellow;
+    cursor: pointer;
+}
+
+
+#wolves>img {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+

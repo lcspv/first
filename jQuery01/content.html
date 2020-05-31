@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        <div>大千</div>
+        <div>宗明</div>
+        <div>露露</div>
+
+        <ul>
+
+        </ul>
+
+        <p></p>
+
+
+        <select id="single">
+            <option>Single</option>
+            <option>Single2</option>
+        </select>
+        <select id="multiple" multiple="multiple">
+            <option selected="selected">Multiple</option>
+            <option>Multiple2</option>
+            <option selected="selected">Multiple3</option>
+        </select><br/>
+        <input type="checkbox" value="check1"/> check1
+        <input type="checkbox" value="check2"/> check2
+        <input type="radio" value="radio1"/> radio1
+        <input type="radio" value="radio2"/> radio2
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+
+    // 取得第一个匹配元素的html内容。这个函数不能用于XML文档。但可以用于XHTML文档。 在一个 HTML 文档中, 我们可以使用 .html() 方法来获取任意一个元素的内容。 如果选择器匹配多于一个的元素，那么只有第一个匹配元素的 HTML 内容会被获取。
+
+    // innerHTML
+    // 获取内容
+    console.log($('div').html());
+
+    // 设置内容
+    $('ul').html('<li>我是li</li>');
+
+    var arr = ["喜欢苍井空", "喜欢小泽", "喜欢波多"];
+    $('div').html(function (i, v) {
+       console.log(i, v);
+        return v + arr[i];
+    });
+
+    // text() 操作文本内容 innerText
+    $('p').text('<li>我是li</li>');
+
+
+    $("#single").val("Single2");
+    var resultArr = $('#multiple').val();
+    console.log(resultArr);
+
+    // html(), val(), text(), 用法基本一样, html()操作的innerHTML, val()操作的是input, select的值, text() 操作的是innerText
+
+
+
+
+
+</script>

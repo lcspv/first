@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>属性操作</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <div class="red"></div>
+        <div class="red"></div>
+        <div class="red"></div>
+
+        <img src="img/1.png" alt="">
+        <img src="img/2.jpeg" alt="">
+
+        <div id="box" index="5"></div>
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+
+    // 获取属性的值
+    // 获取匹配的第一个元素的class的值
+    console.log($('div.red').attr('class'));
+
+    // 设置属性
+    $('img:eq(1)').attr('src', 'img/3.jpeg');
+
+
+    // 以对象的形式操作多个属性
+    $('img').attr({
+        width: 200,
+        height: function (i, v) {
+            return (i + 2) * 50;
+        }
+    });
+
+
+    $('img').attr('width', function (i, v) {
+        // 第一个参数: 元素的下标, 第二个参数: 属性的旧值
+        console.log(i, v);
+
+        return (i + 1) * 50;
+    });
+
+    // 删除属性
+    $('img').removeAttr('src');
+
+    // prop用法同attr, 只不过attr一般用于操作自定义属性, prop用于操作固有属性, 和属性值为布尔值的属性
+    console.log($('#box').attr('index'));
+    console.log($('#box').prop('index'));
+
+    // 设置属性
+    $('#box').prop('age', 18);
+    console.log($('#box').prop('age'));
+    $('#box').removeProp('age');
+    console.log($('#box').prop('age'));
+
+
+
+
+
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            img {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <img src="zhang.jpg" alt="">
+    </body>
+</html>
+<script>
+    var oImg = document.querySelector('img');
+
+    oImg.style.zIndex = 1;
+    document.onmousemove = function (e) {
+        var evt = e || window.event;
+        oImg.style.left = evt.clientX - 75 + 'px';
+        oImg.style.top = evt.clientY - 75 + 'px';
+    };
+    
+    document.onclick = function (e) {
+        var evt = e || window.event;
+        var anImg = document.createElement('img');
+        anImg.style.left = oImg.offsetLeft + 'px';
+        anImg.style.top = oImg.offsetTop + 'px';
+        anImg.src = oImg.src;
+        document.body.appendChild(anImg);
+        
+    };
+
+
+
+
+
+
+</script>

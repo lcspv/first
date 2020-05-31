@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>第二个页面</title>
+    </head>
+    <body>
+        <a href="index3.html">进入下一页</a>
+        <button id="back">返回上一页</button>
+    </body>
+</html>
+<script>
+
+    var backBtn = document.querySelector('#back');
+    backBtn.onclick = function () {
+        // 后退, 效果同浏览器上的后退按钮
+        history.back();
+    };
+
+
+
+</script>

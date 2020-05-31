@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>工具</title>
+    </head>
+    <body>
+        <div></div>
+
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+        var a = {name:"小明",age:18};
+        var b = {hobby:"女",gender:"男"};
+        var c = $.extend(false,a,b);
+    console.dir(a);
+    console.log(c);
+
+    var arr = [1, 2, 3, 4, 5];
+    arr = $.grep(arr,function(n,i){
+        return n>2;
+        },true);
+    console.log(arr);
+
+    //给JQuery对象封装方法
+    $.fn.extend ({
+        sayHello:function () {
+            alert("hello,world");
+        },
+        run:function () {
+            alert("我会跑");
+        }
+    });
+    $('div').run();
+    $('div').sayHello();
+
+</script>

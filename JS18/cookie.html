@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        key: <input type="text">
+        value: <input type="text">
+
+        <button>查看</button>
+        <button>增加</button>
+        <button>修改</button>
+        <button>删除</button>
+
+        <div id="one">123</div>
+
+    </body>
+</html>
+<script src="js/cookie.js"></script>
+<script>
+    // cookie出现的原因: HTTP协议是一个无状态协议(短链接), 一旦数据传输完毕(打开了网页), 客户端和服务器端就会断开链接, 再次数据传递, 服务器端无法识别客户端的身份, 为了确认客户端的身份, 出现了cookie
+
+    // cookie的使用原理: cookie是一段文本信息, 客户端向服务器端发送请求, 如果服务器端要记录用户的状态, 就可以为客户端浏览器发送一个cookie, 客户端浏览器会把cookie保存下来, 在再次向服务器发送该网站的请求时, 浏览器会把cookie发送给服务器, 服务器检查cookie, 确认客户端的状态
+
+    // 应用场景:
+    // 1. 保存用户的登录状态(自动登录, 记住密码等等)
+    // 2. 跟踪用户的行为
+    // 3. 定制页面(网站设置)
+    // 4. 购物车(浏览过的产品, 购物车)
+
+    // cookie的弊端
+    // 1. 容量比较小, 4KB
+    // 2. cookie有条数限制 (ie7一下, 最多20条, ie7以上50条, chrome下没有硬性限制)
+    // 3. cookie可以被删除
+    // 4. cookie安全性
+    // 5. cookie是有期限限制的
+
+    var lookBtn = document.querySelector('button');
+    var addBtn = lookBtn.nextElementSibling;
+    var modifyBtn = addBtn.nextElementSibling;
+    var deleteBtn = modifyBtn.nextElementSibling;
+    var keyInput = document.querySelector('input');
+    var valueInput = keyInput.nextElementSibling;
+
+    lookBtn.onclick = function () {
+        // 注意: 不同的域名cookie不同, 同一域名的不同网页cookie内容存放在同一个cookie中
+        // 注意: 不同浏览器管理各自的cookie
+//        console.log(document.cookie);
+
+        console.log($cookie.getCookie(keyInput.value));
+    };
+
+    addBtn.onclick = function () {
+        /*
+        // cookie是由键值对组成字符串
+        document.cookie = "username=waige";
+
+        // 如果设置的key值一样, 那么后面的值会覆盖之前的值
+        document.cookie = "username=xiaoqiang";
+
+        // 如果设置的key值之前不存在, 相当于重新添加一个key-value
+        document.cookie = "password=123456";
+        */
+
+        // 设置过期时间
+        // 方式1
+        // document.cookie = "username=xiaowang;";
+
+        // 设置日期
+        /*
+        var date1 = new Date;
+        date1.setDate(date1.getDate() + 1);
+        document.cookie = "gender=male; expires=" + date1.toString();
+        */
+
+        // 方式2
+        // max-age, 设置秒数, 默认-1, 浏览器关闭之后, cookie会被清除
+        // 如果max-age和expires同时写, max-age生效
+
+        // document.cookie = "username=waige; max-age=60";
+
+        // document.cookie = "username=waige; max-age=" + 24 * 3600 * 30;
+
+        // secure=true
+        // 如果secure = true, 那么cookie只有在https(安全超文本传输协议)下才会被传输
+
+
+        // 添加cookie
+        $cookie.addCookie(keyInput.value, valueInput.value, 60);
+
+
+    };
+    
+    deleteBtn.onclick = function () {
+
+        $cookie.deleteCookie(keyInput.value);
+    };
+    
+    console.log($("button"));
+    console.log($('#one').innerHTML);
+
+
+
+
+
+</script>

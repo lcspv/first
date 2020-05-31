@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #one {
+                position: relative;
+                width: 500px;
+                height: 500px;
+                border: 20px solid blue;
+                padding: 50px;
+                background: yellow;
+                margin: 100px auto 0;
+            }
+
+            #two {
+                width: 300px;
+                height: 300px;
+                background: red;
+                padding: 100px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                margin: 50px;
+                border: 20px solid black;
+                border-top: 30px solid purple;
+            }
+
+            #three {
+                width: 200px;
+                height: 600px;
+                background: chartreuse;
+                /*border: 20px solid orange;*/
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="one">
+            <div id="two">
+                <div id="three"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
+<script>
+
+    // 获取元素
+    var twoDiv = document.getElementById('two');
+
+    // 内尺寸
+    // clientWitdh = padding-left + content-width + padding-right
+    console.log(twoDiv.clientWidth);
+
+    // clientHeight = padding-top + content-height + padding-bottom
+    console.log(twoDiv.clientHeight);
+
+    // border-top
+    console.log(twoDiv.clientTop);
+
+    // 可以判断对象中是否有该属性(或者方法)
+    var result = "clientBottom" in twoDiv;
+    console.log(result);
+    result = "clientTop" in twoDiv;
+    console.log(result);
+
+    // border-left
+    console.log(twoDiv.clientLeft);
+
+    // 外尺寸
+    // offsetWidth = content-width + padding-left + padding-right + border-left + border-right
+    console.log(twoDiv.offsetWidth);
+
+    // offsetHeight = content-height + padding-top + padding-bottom + border-top + border-bottom
+    console.log(twoDiv.offsetHeight);
+
+    // 自身的上外边距到offsetParent的上内边距的距离
+    console.log(twoDiv.offsetTop);
+//    console.dir(twoDiv);
+
+    // 自身的左外边距到offsetParent的左内边距的距离
+    console.log(twoDiv.offsetLeft);
+
+    // 离自己最近的具有定位属性的父辈元素(属性的值不为static), 祖宗是body
+    console.log(twoDiv.offsetParent);
+
+
+    // 滚动尺寸
+    // 如果子元素的高度 > content.heigth: scrollHeight = 子元素的offsetHeight + 自身的padding-top + 自身的padding-bottom, 否则 scollHeight = 自身的clientHeight
+    console.log(twoDiv.scrollHeight);
+
+    // 如果子元素的宽度 > content.width: scrollWidth = 子元素的offsetWidth + 自身的padding-left + 自身的padding-right, 否则scrollWidth = 自身的clientWidth
+    console.log(twoDiv.scrollWidth);
+
+    
+    twoDiv.onclick = function () {
+        // 垂直方向滚动的距离
+        console.log(twoDiv.scrollTop);
+        // 水平方向滚动的距离(和自身的padding没有任何关系)
+        console.log(twoDiv.scrollLeft);
+    };
+
+
+
+
+
+
+
+</script>

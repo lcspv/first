@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+
+            #red {
+                width: 100px;
+                height: 100px;
+                border: 2px solid blue;
+                margin: 100px auto 0;
+            }
+
+            #cir {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background: gold;
+                position: absolute;
+            }
+
+            #purple {
+                width: 200px;
+                height: 200px;
+                background: yellow;
+                margin: 100px auto 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="red"></div>
+        <div id="cir"></div>
+        <div id="purple"></div>
+    </body>
+</html>
+<script>
+
+    /*
+    var redDiv = document.querySelector('#red');
+    var a = 1;
+    var timeoutId;
+
+    var num = 0;
+    // 单击事件
+    // 实现双击放大, 单击缩小
+    redDiv.onclick = function () {
+//        console.log("单击");
+
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+
+        timeoutId = setTimeout(function () {
+
+            a /= 2;
+            redDiv.style.transform = "scale(" + a + ")";
+
+        }, 500);
+
+    };
+    
+    // 双击事件
+    redDiv.ondblclick = function () {
+//        console.log("双击");
+        clearTimeout(timeoutId);
+        a *= 2;
+        redDiv.style.transform = "scale(" + a + ")";
+    };
+    
+    */
+
+    /*------------------------------------------*/
+    // 实现拖动效果
+    var cirDiv = document.querySelector('#cir');
+    cirDiv.onmousedown = function (e) {
+
+        var evt = e || window.event;
+        var x = evt.clientX - cirDiv.offsetLeft;
+        var y = evt.clientY - cirDiv.offsetTop;
+
+//        cirDiv.onmousemove = function (e2) {
+//
+//        };
+
+        document.onmousemove = function (e2) {
+
+            console.log("我在document上");
+
+            var evt2 = e2 || window.event;
+            console.log("我在cirDiv上")
+            cirDiv.style.left = evt2.clientX - x + 'px';
+            cirDiv.style.top = evt2.clientY - y + 'px';
+        };
+        
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        };
+
+    };
+
+
+
+
+    // onmouseover / onmouseenter, 后者不会触发事件冒泡, 鼠标悬浮在元素上的行为
+    // onmouseout  / onmouseleave, 后者不会触发事件冒泡, 鼠标离开元素的行为
+
+    var purpleDiv = document.querySelector('#purple');
+    purpleDiv.onmouseenter = function () {
+
+        this.style.borderRadius = '50%';
+
+    };
+    
+    purpleDiv.onmouseleave = function () {
+        this.style.borderRadius = 0;
+    };
+    
+    purpleDiv.oncontextmenu = function (e) {
+        var evt = e || window.event;
+        this.innerHTML = "SB";
+        // 取消与事件相关的其他默认行为
+        evt.preventDefault();
+//        return false;
+    };
+    
+    document.oncontextmenu = function () {
+        return false;
+    };
+
+    
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .box {
+                position: relative;
+                margin: 150px auto 0;
+                width: 350px;
+                height: 200px;
+                border: 2px solid gold;
+                overflow: hidden;
+            }
+
+            #content {
+                position: absolute;
+                width: 10000px;
+                height: 200px;
+            }
+
+            #content>img {
+                float: left;
+                width: 100px;
+                height: 200px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="box">
+
+            <div id="content">
+                <img src="img/1.png" alt="">
+                <img src="img/2.jpeg" alt="">
+                <img src="img/3.jpeg" alt="">
+                <img src="img/4.png" alt="">
+                <img src="img/5.jpeg" alt="">
+                <img src="img/6.png" alt="">
+            </div>
+            
+        </div>
+
+    </body>
+</html>
+<script src="js/tween.js"></script>
+<script>
+
+    // 获取元素
+    var contentDiv = document.getElementById('content');
+
+    contentDiv.innerHTML += contentDiv.innerHTML;
+
+    // 记录当前下标
+    var index = 0;
+
+    var t = 0, c = -50, d = 100;
+
+    setInterval(scroll, 10);
+
+    function scroll() {
+        t++;
+        var b = index * (-50);
+        contentDiv.style.left = Tween.Bounce.easeInOut(t, b, c, d) + 'px';
+
+        // 步数走完的时候
+        if (t == d) {
+            // 步数清0
+            t = 0;
+
+            // 下标自增1, 证明走完一张了
+            index++;
+        }
+
+        // 如果图片走完了
+        if (index == 12) {
+            index = 0;
+            contentDiv.style.left = 0;
+        }
+
+    }
+
+
+
+
+
+
+</script>

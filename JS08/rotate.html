@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+
+            .center {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: blue;
+                position: relative;
+                margin: 300px auto 0;
+            }
+
+            #ball {
+                width: 100px;
+                height: 100px;
+                background-color: yellow;
+                border-radius: 50%;
+                position: absolute;
+                left: calc(50% - 50px);
+                top: calc(50% - 250px);
+                transform-origin: center 250px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="center">
+            <div id="ball"></div>
+        </div>
+
+    </body>
+</html>
+<script src="js/tween.js"></script>
+<script>
+
+    var ballDiv = document.getElementById('ball');
+    var t = 0, b = 0, c = 360, d = 100;
+    
+    function rotate() {
+        t++;
+        ballDiv.style.transform = "rotate(" + Tween.Circ.easeInOut(t, b, c, d) + "deg)";
+        if (t == d) {
+            t = 0;
+//            ballDiv.style.transform = "rotate(0deg)";
+        }
+    }
+    setInterval(rotate, 10);
+
+
+
+
+</script>

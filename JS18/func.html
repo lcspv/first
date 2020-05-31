@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+
+    var person = {
+        name: "小强",
+        age: 18,
+        gender: "男"
+    };
+
+    // 把json对象转化成字符串
+    var str = JSON.stringify(person);
+    console.log(str);
+
+    // 把json字符串转化成对象
+    var obj = JSON.parse(str);
+    console.log(obj);
+
+    // 注意: json串中key和value的值只能用双引号包裹, 才能解析成对象
+    var myStr = '{"name": "waige"}';
+    var obj2 = JSON.parse(myStr);
+    console.log(obj2);
+
+    // call()
+    // 改变this指向
+    // 第一个参数传入什么, 调用的函数内部的this就是什么
+    // 后面的参数就是调用函数时传入的实参
+    function f(y, z) {
+        console.log(o === this);
+        console.log(this.x + y + z);
+    }
+    var o = {x: 1};
+    f.call(o, 10, 20);
+
+    var cat = {
+        name: "小猫咪",
+        type: "animal",
+        eat: function (str) {
+            console.log(str);
+            console.log(this);
+            function test() {
+                console.log(this);
+            }
+            test.call(this);
+        }
+    };
+    cat.eat();
+
+    // apply()
+    // 用法同call(), 只不过第二个参数为数组, 调用函数时传入的实参是数组中的元素
+    f.apply(o, [2, 3]);
+
+
+    // bind()
+    // 将函数绑定到对象身上
+    var dog = {
+        name: "哈利",
+        age: 3,
+        hobby: "骨头"
+    };
+    function func() {
+        console.log(this.name, this.age, this.hobby);
+    }
+
+    // func: 要绑定的函数对象
+    // dog: 函数要被绑定到的对象
+    // 返回一个函数
+    var g = func.bind(dog);
+    g();
+
+    // 相当于
+    dog.m = func;
+    dog.m();
+
+
+
+
+</script>

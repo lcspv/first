@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+span.num {
+    color: red;
+    margin: 0 20px;
+}
+
+span.blue {
+    color: blue;
+    margin: 0 20px;
+}
+
+.dtable {
+    display: table;
+    /*border: 2px solid black;*/
+    border-collapse: collapse;
+}
+
+.drow {
+    display: table-row;
+}
+
+.dcell {
+    display: table-cell;
+    border: 2px solid blue;
+    padding: 5px 30px;
+    font-size: 20px;
+}
+
+.color {
+    width: auto;
+    height: 45px;
+    margin: 50px 100px;
+    border: thick groove greenyellow;
+}

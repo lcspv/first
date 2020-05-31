@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <a href="http://www.baidu.com">百度以下, 你就知道</a>
+    </body>
+</html>
+<script>
+
+    /*
+    document.oncontextmenu = function (e) {
+        console.log("点击了右键");
+
+        // 取消默认行为, 并不会阻止事件冒泡, 和捕获过程
+        e.preventDefault();
+//        return false;
+    };
+    */
+
+    // 如果第三个参数不给, 默认是false
+    document.addEventListener('contextmenu', function (e) {
+        console.log("右键被点击");
+//        e.preventDefault();
+        // return false在addEventlistener添加的事件下没有效果
+        return false;
+    });
+
+    var a = document.querySelector('a');
+    a.addEventListener('click', function (e) {
+        console.log(1111);
+        e.preventDefault();
+    });
+
+</script>

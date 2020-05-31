@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            // onload: 文档或图片加载完成以后执行的方法
+            window.onload = function () {
+                var oP = document.querySelector('p');
+//                document.write(oP.innerHTML);
+            };
+            // onerror: 文档或图片加载失败以后执行的方法
+            window.onerror = function () {
+                console.log("文档加载失败!");
+            };
+
+        </script>
+        <!--<script>-->
+            <!--aalertds("a");-->
+        <!--</script>-->
+    </head>
+    <body>
+        <p>123456789</p>
+
+        <img src="img/in.jpg" alt="">
+
+        <textarea cols="30" rows="10">
+            今天周一, 祝大家在新的一周里好好学习, 都能找到不懵逼的感觉。
+        </textarea>
+
+    </body>
+</html>
+<script>
+    var oImg = document.querySelector('img');
+    oImg.onload = function () {
+        console.log("图片加载完成!!!");
+    };
+
+    oImg.onerror = function (e) {
+        console.log("图片加载失败!!!");
+//        console.log(e);
+    };
+
+    var oTextarea = document.querySelector('textarea');
+    // 被选中
+    oTextarea.onselect = function () {
+        console.log('被选中了');
+    };
+
+    // 剪切
+    oTextarea.oncut = function () {
+        console.log("被剪切了");
+    };
+
+    // 复制
+    oTextarea.oncopy = function () {
+        console.log("被复制了");
+    };
+
+    // 通过这种方式可以自定义选中, 复制, 粘贴功能
+    /*
+    function text() {
+        var txt = "";
+        if (document.selection) {
+            // ie
+            txt = document.selection.createRange().text;
+        } else  {
+            txt = document.getSelection();
+        }
+        return txt;
+    }
+    document.onmouseup = function () {
+        alert(text());
+    };
+    */
+
+
+
+
+
+</script>

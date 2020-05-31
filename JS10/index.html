@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            /*li {*/
+                /*visibility: hidden;*/
+                /*display: none;*/
+            /*}*/
+
+            div[a=b] {
+                width: 200px;
+                height: 200px;
+                background: red;
+            }
+
+            .green {
+                width: 200px;
+                height: 200px;
+                background: green;
+            }
+
+            #dog {
+                width: 300px;
+                height: 50px;
+                background: blue;
+                font-size: 30px;
+                margin: 20px auto 0;
+            }
+
+            #dog::after {
+                content: "露露666";
+                color: white;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        js:
+            1. 基础语法
+            2. DOM
+            3. BOM
+        DOM: Document Object Model, 文档对象模型
+        描述了处理文档方法, 可以对文档进行增, 删, 改, 查
+        DOM树: 网页加载完成以后, 浏览器会创建一个具有层级关系的树状结构
+        DOM树中存放了很多节点
+
+        节点类型:
+            1. 元素节点 < div >
+            2. 文本节点 hello, world
+            3. 声明节点 < !DOCTYPE html >
+            4. 注释节点 < !-- 注释 -- >
+            5. 文档根节点 document
+
+        节点之间的关系:
+
+            1. 兄弟(具有相同父节点)
+            2. 父节点
+            3. 子节点
+            4. 祖先节点
+            5. 后代节点
+
+        <p id="one">
+            hello
+        </p>
+    
+        <div class="two"></div>
+        <ul class="two">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+        <select name="lulu" id="">
+            <option value="1">1</option>
+        </select>
+    
+    
+        <ul id="three">
+            hi
+            <li>香蕉</li>
+            <li>苹果</li>
+            <li>黄瓜</li>
+            <li>菠萝</li>
+            <!-- 榴莲闻起来好骚气啊 -->
+            h
+            e
+            l
+            l
+            o
+            <li>榴莲</li>
+            <!--萝卜可以用-->
+            <li>萝卜</li>
+        </ul>
+
+
+        <ul id="hello">
+            哈哈
+            <li style="display: none;">hi</li>
+            <li style="opacity: 0;">hello</li>
+            <li style="visibility: hidden;">nihao</li>
+            呵呵
+        </ul>
+
+
+        <div id="test">
+            hello
+            <!-- 露露 -->
+            <p>大家是p</p>
+        </div>
+
+        <div id="red"></div>
+
+
+        <div id="dog" style="width: 400px;">小狗小狗汪汪叫</div>
+
+    </body>
+</html>
+<script>
+    // 获取元素的方法
+    // 通过id名返回一个元素, id唯一
+    var p1 = document.getElementById('one');
+    // console.dir() 可以打印出一个对象的详细信息
+    console.dir(p1);
+
+    // 通过类名, 返回一个包含一个或者多个元素节点的类数组
+    var eArr = document.getElementsByClassName('two');
+    console.dir(eArr);
+//    console.dir([1, 2]);
+    var oUl = eArr[1];
+    console.dir(oUl);
+
+    // 通过tag值(元素名)获取元素
+    var liArr = oUl.getElementsByTagName('li');
+    // 只获取该ul下的所有li
+    console.log(liArr);
+
+    // 通过选择器获取元素, 返回包含一个或者多个元素节点的数组
+    var sArr = document.querySelectorAll('.two');
+    console.log(sArr);
+
+    var pL = document.querySelectorAll('#one');
+    console.log(pL);
+
+    var eArr2 = document.querySelectorAll('div, p, ul');
+    console.log(eArr2);
+
+    // 根据选择器返回满足条件的第一个元素
+    var oLi = document.querySelector('li');
+    console.log(oLi);
+
+    // 通过name属性获取元素
+    var oSelect = document.getElementsByName('lulu');
+    console.log(oSelect);
+
+
+    // 特殊节点
+    // 根节点
+    console.log(document);
+
+    // 声明节点
+    console.log(document.doctype);
+
+    // head
+    console.log(document.head);
+
+    // body
+    console.log(document.body);
+
+    // html
+    console.log(document.documentElement);
+
+
+    var fruitUl = document.getElementById('three');
+    console.log(fruitUl);
+
+    // 元素的所有子节点, 注意: 换行和空格都是文本节点
+    console.log(fruitUl.childNodes);
+
+    // 元素的第一个节点
+    console.log(fruitUl.firstChild);
+
+    // 元素的最后一个节点
+    console.log(fruitUl.lastChild);
+
+    // 获取元素的第二个节点
+    var liNode = fruitUl.childNodes[1];
+    console.log(liNode);
+
+    // 上一个兄弟节点
+    console.log(liNode.previousSibling);
+
+    // 下一个兄弟节点
+    console.log(liNode.nextSibling);
+
+    // 找到注释节点?
+    console.log(liNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling);
+
+    // 父节点
+    var parentNode = liNode.parentNode;
+    console.log(parentNode);
+
+    // body
+    console.log(parentNode.parentNode);
+
+    // head
+    console.log(parentNode.parentNode.previousSibling.previousSibling);
+
+    // 获取节点下面的所有元素节点
+    var eleArr = fruitUl.children;
+    console.log(eleArr);
+
+    // 获取第一个子元素节点
+    var firstEle = fruitUl.firstElementChild;
+    console.log(firstEle);
+
+    // 获取最后一个子元素节点
+    var lastEle = fruitUl.lastElementChild;
+    console.log(lastEle);
+
+    // 获取上一个兄弟元素
+    console.log(document.body.previousElementSibling);
+
+    // 获取下一个兄弟元素
+    console.log(firstEle.nextElementSibling);
+
+    // 获取父元素
+    console.log(firstEle.parentElement);
+
+
+    var helloUl = document.getElementById('hello');
+    // 获取元素中的所有内容
+    console.log(helloUl.innerHTML);
+
+    // 只获取文本, 空格换行会被过滤, 如果样式为 display: none; 或者 visibility: hidden; 那么文本不会显示
+    console.log(helloUl.innerText);
+
+    // 只获取文本
+    console.log(helloUl.textContent);
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    var testDiv = document.querySelector('#test');
+
+    // 获取文本节点
+    var textNode = testDiv.firstChild;
+
+    // 获取注释节点
+    var commentNode = textNode.nextSibling;
+
+    // 获取元素节点
+    var eleNode = testDiv.firstElementChild;
+
+    // 文本节点的值
+    console.log(textNode.nodeValue);
+
+    // 注释节点的值
+    console.log(commentNode.nodeValue);
+
+    // 元素节点的值
+    console.log(eleNode.nodeValue);
+
+    // 声明节点的值
+    console.log(document.doctype.nodeValue);
+
+    // 根节点的值
+    console.log(document.nodeValue);
+    // 只有文本节点和注释节点有值, 其他节点的nodeValue值为null
+
+
+    // 节点类型
+    // 文本节点类型 3
+    console.log(textNode.nodeType);
+    // 注释节点类型 8
+    console.log(commentNode.nodeType);
+    // 元素节点类型 1
+    console.log(eleNode.nodeType);
+    // 根节点类型 9
+    console.log(document.nodeType);
+    // 声明节点类型 10
+    console.log(document.doctype.nodeType);
+
+    // 节点名字
+    // 文本节点的名字: #text
+    console.log(textNode.nodeName);
+    // 注释节点的名字: #comment
+    console.log(commentNode.nodeName);
+    // 元素节点的名字: 大写标签名
+    console.log(eleNode.nodeName);
+    // 根节点的名字: #document
+    console.log(document.nodeName);
+    // 声明节点的名字: 文档类型 html
+    console.log(document.doctype.nodeName);
+
+//    console.dir(document);
+    if (helloUl.hasChildNodes()) {
+        console.log("有子节点");
+    } else  {
+        console.log("没有子节点");
+    }
+
+    // 设置行内属性
+    var redDiv = document.querySelector('#red');
+//    redDiv.a = "b";
+//    console.log(redDiv.a);
+    // 给元素添加行内属性
+    // 给redDiv元素添加一个行内属性, 属性名为a, 值为b
+    redDiv.setAttribute('a', 'b');
+    // 通过属性名获取属性的值
+    redDiv.getAttribute('a');
+
+    setTimeout(function () {
+        // 移除属性
+        redDiv.removeAttribute('a');
+
+    }, 3000);
+    setTimeout(function () {
+        // 修改元素的类名
+        redDiv.className = "green";
+    }, 5000);
+
+
+    // 创建元素
+    var oImg = document.createElement('img');
+    oImg.src = "img/1.png";
+    oImg.style.width = "200px";
+    // A.appendChild(B) 把B元素添加到A元素的末尾
+    document.body.appendChild(oImg);
+
+    var oInput = document.createElement('input');
+    oInput.placeholder = "请输入您的银行密码";
+    // 将 oInput 元素 插入 到 oImg元素之前
+    document.body.insertBefore(oInput, oImg);
+
+
+    // replaceChild()
+    var oDiv = document.createElement('div');
+    oDiv.innerHTML = "我是替换的元素";
+    // 用oDiv元素替换掉oImg元素
+    document.body.replaceChild(oDiv, oImg);
+
+
+    // removeChild()
+    document.body.removeChild(oInput);
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    var dogDiv = document.getElementById('dog');
+    // 行内样式
+    console.log(dogDiv.style);
+    console.log(dogDiv.style.width);
+
+
+
+    // 获取全部样式
+    // ie下获取
+    console.log(dogDiv.currentStyle);
+
+    // 其它(包含ie9+)
+    console.log(getComputedStyle(dogDiv, null));
+
+    // 通过下面这两种方式可以获取某一个样式的值
+    console.log(getComputedStyle(dogDiv, null).backgroundColor);
+    console.log(getComputedStyle(dogDiv, null)['backgroundColor']);
+
+    // 获取伪元素样式
+    console.log(getComputedStyle(dogDiv, '::after').color);
+
+    // getComputedStyle(参数1, 参数2)
+    // 参数1: 元素
+    // 参数2: 伪元素选择器
+    // 如果参数2为null, 获取元素的所有样式
+    // 如果为伪元素选择器, 获取伪元素选择器里面内容的所有样式
+
+
+
+
+
+
+
+
+</script>

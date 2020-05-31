@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <p></p>
+
+    </body>
+</html>
+<script>
+
+    var op = document.querySelector('p');
+
+    // 获取当前位置信息, 可以放三个参数
+    // 第一个参数是 successCallback
+    // 第二个参数是 errorCallback
+    // 第三个参数是 options  包含三个属性 enableHighAccuracy, timeout, maximumAge(最长缓存时间)
+    navigator.geolocation.getCurrentPosition(function (position) {
+
+        op.innerHTML = "经度: " + position.coords.longitude +  " 纬度: " + position.coords.latitude + " 高度: " + position.coords.altitude + " 精准度: " + position.coords.accuracy + " 高度精度: " + position.coords.altitudeAccuracy + " 角度: " + position.coords.heading + " 速度: " + position.coords.speed + " 时间: " + new Date(position.timestamp);
+        
+    }, function (e) {
+        console.log(e.message);
+    }, {
+        // 开始高精度会浪费电和流量(money)
+        enableHighAccuracy: true,
+        // 定位时长, 如果写0, 无限长
+        timeout: 0,
+        // 最长缓存时间
+        maximumAge: 0
+    });
+
+    // 监听位置变化, 参数同getCurrentPosition
+    var watchId = navigator.geolocation.watchPosition(function (position) {
+
+        alert(" 经度: " + position.coords.longitude + " 纬度: " + position.coords.latitude);
+
+    });
+
+    // 可以通过clearWatch清除监听位置
+//    navigator.geolocation.clearWatch(watchId);
+
+
+
+
+</script>

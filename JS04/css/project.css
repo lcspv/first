@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+}
+
+div {
+    border: thin solid black;
+    box-sizing: border-box;
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+}

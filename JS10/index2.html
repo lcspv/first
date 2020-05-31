@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        <table border="1"></table>
+
+    </body>
+</html>
+<script>
+
+    var oTable = document.querySelector('table');
+
+    // 创建tr
+//    var tr0 = document.createElement('tr');
+//    var td0 = document.createElement('td');
+//    td0.innerHTML = "单元格1";
+//    var td1 = document.createElement('td');
+//    td1.innerHTML = "单元格2";
+//    tr0.appendChild(td0);
+//    tr0.appendChild(td1);
+//    oTable.appendChild(tr0);
+
+    /*
+    // 创建并插入一行
+    oTable.insertRow(0);
+    // 获取表格的所有行
+//    oTable.rows
+    // 给第一行添加一个单元格
+    oTable.rows[0].insertCell(0);
+
+    // 修改第一行的第一个单元格的内容
+    oTable.rows[0].cells[0].innerHTML = "单元格1";
+    */
+
+
+    var arr = [
+        ["苹果", "香蕉", "哈密瓜"],
+        ["白菜", "萝卜", "大蒜"],
+        ["小鸟", "大鸟", "鱼"]
+    ];
+    for (var i = 0; i < arr.length; i++) {
+        // 创建行
+        oTable.insertRow(i);
+        for (var j = 0; j < arr[i].length; j++) {
+            // 创建单元格
+            oTable.rows[i].insertCell(j);
+
+            // 给单元格赋值
+            oTable.rows[i].cells[j].innerHTML = arr[i][j];
+        }
+    }
+
+    // 删除行
+    oTable.deleteRow(1);
+
+    // 删除单元格
+    oTable.rows[1].deleteCell(2);
+
+
+
+
+
+</script>

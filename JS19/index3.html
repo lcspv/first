@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            div {
+                width: 200px;
+                height: 200px;
+                background: red;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div></div>
+    </body>
+</html>
+<script src="js/wheel.js"></script>
+<script>
+
+    var oDiv = document.querySelector('div');
+    // 滚轮事件
+    /*
+    oDiv.addEventListener('mousewheel', function (e) {
+
+        // 往上滚是负数, 往下滚是正数
+        console.log(e.wheelDelta);
+//        console.log(e);
+
+    });
+
+    // Firefox下使用该方法添加滚轮事件
+    oDiv.addEventListener('DOMMouseScroll', function (e) {
+        // 往上滚是正数, 往下滚是负数
+        console.log(e.detail);
+    });
+    */
+    
+    
+    addWheel(oDiv, function (direction) {
+        var num = direction ? -10 : 10;
+        oDiv.style.width = oDiv.offsetWidth + num + 'px';
+        oDiv.style.height = oDiv.offsetHeight + num + 'px';
+    });
+
+
+
+
+</script>

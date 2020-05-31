@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                height: 2000px;
+            }
+
+
+            .one {
+                height: 150px;
+                background: blue;
+            }
+
+            #top {
+                width: 50px;
+                height: 50px;
+                background: yellow;
+                text-align: center;
+                line-height: 50px;
+                position: fixed;
+                right: 50px;
+                bottom: 50px;
+                border-radius: 50%;
+                opacity: 0;
+                transition: 1s;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="one"></div>
+
+        <div id="top">top</div>
+
+
+
+    </body>
+</html>
+<script>
+    var topDiv = document.getElementById('top');
+
+    window.onscroll = function () {
+        // FireFox下通过html来获取页面滚动的高度
+        // Chrome下通过body来获取页面滚动的高度
+        console.log(document.body.scrollTop, document.documentElement.scrollTop);
+
+        var htmlTop = document.documentElement.scrollTop;
+        var bodyTop = document.body.scrollTop;
+
+        if (htmlTop >= 50 || bodyTop >= 50) {
+            topDiv.style.opacity = 1;
+        } else  {
+            topDiv.style.opacity = 0;
+        }
+    };
+
+    topDiv.onclick = function () {
+
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+    };
+
+
+
+
+
+
+
+</script>

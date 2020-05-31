@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>元素距离窗口上端和左端的距离</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #a {
+                position: relative;
+                width: 600px;
+                height: 600px;
+                border: 2px solid black;
+                background: red;
+                margin: 100px auto 0;
+            }
+
+            #b {
+                position: relative;
+                width: 350px;
+                height: 350px;
+                border: 2px solid blue;
+                background: orange;
+                margin: 50px auto 0;
+            }
+
+            #c {
+                width: 100px;
+                height: 100px;
+                background: yellow;
+                margin: 50px auto 0;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+    <div id="a">
+        <div id="b">
+            <div id="c"></div>
+        </div>
+    </div>
+
+    </body>
+</html>
+<script>
+    // 获取元素
+    var cDiv = document.getElementById('c');
+
+    // 如果父辈元素都没有定位属性
+//    console.log(cDiv.offsetTop);
+
+    // 如果a元素有定位属性
+//    var result1 = cDiv.offsetTop + cDiv.offsetParent.clientTop + cDiv.offsetParent.offsetTop;
+//    console.log(result1);
+
+
+    // 如果a, b都有定位属性
+//    var result2 = cDiv.offsetTop + cDiv.offsetParent.clientTop + cDiv.offsetParent.offsetTop + cDiv.offsetParent.offsetParent.clientTop + cDiv.offsetParent.offsetParent.offsetTop;
+//    console.log(result2);
+
+    
+    function getTop(ele) {
+
+        if (!ele.offsetParent) {
+            return 0;
+        }
+
+        var top = ele.offsetTop + ele.offsetParent.clientTop;
+        return top + getTop(ele.offsetParent);
+
+    }
+    console.log(getTop(cDiv));
+
+
+
+
+</script>

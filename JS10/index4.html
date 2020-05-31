@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    
+        省/直辖市
+        <select>
+            <option value="0">请选择</option>
+            <option value="1">北京</option>
+            <option value="2">河南</option>
+
+        </select>
+        市/区
+        <select>
+            <option value="0">请选择</option>
+        </select>
+
+    </body>
+</html>
+<script>
+    // 获取元素
+    var select1 = document.querySelector('select');
+    var select2 = select1.nextElementSibling;
+
+    var arr1 = ["海淀", "丰台", "朝阳", "昌平", "惠济"];
+    var arr2 = ["兰考", "郑州", "南阳", "商丘", "开封", "洛阳"];
+
+    // 添加事件
+    // 下拉列表的值发生改变时会触发该方法
+    select1.onchange = function () {
+
+        // 获取下拉列表的子元素的个数
+        var len = select2.children.length;
+
+        // 清空内容, 保留第一个请选择option
+        // 倒着删
+        for (var i = len - 1; i > 0; i--) {
+            select2.removeChild(select2.children[i]);
+        }
+
+        // 如果选择的是北京
+        if (select1.value == 1) {
+
+            for (var i = 0; i < arr1.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = arr1[i];
+                select2.appendChild(opt);
+            }
+            return;
+
+        }
+
+        // 如果选择的是河南
+        if (select1.value == 2) {
+            for (var i = 0; i < arr2.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = arr2[i];
+                select2.appendChild(opt);
+            }
+            return;
+        }
+
+
+    };
+
+
+</script>

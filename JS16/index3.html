@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background: red;
+        }
+
+        #two {
+            background: blue;
+            top: 300px;
+            left: 500px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="one"></div>
+    <div id="two"></div>
+
+</body>
+</html>
+<script src="js/crash.js"></script>
+<script>
+
+    // 获取元素
+    var oneDiv = document.querySelector('#one');
+    var twoDiv = document.querySelector('#two');
+
+    oneDiv.onmousedown = function (e) {
+        var evt = e || window.event;
+
+        // 记录鼠标点击的位置距离元素左边和上边的距离
+        var x = evt.clientX - this.offsetLeft;
+        var y = evt.clientY - this.offsetTop;
+
+        document.onmousemove = function (e) {
+            // 获取事件对象
+            var evt = e || window.event;
+
+            oneDiv.style.left = evt.clientX - x + 'px';
+            oneDiv.style.top = evt.clientY - y + 'px';
+
+            // 判断是否相撞
+            var result = isCrash(oneDiv, twoDiv);
+            if (result) {
+                twoDiv.style.backgroundColor = "gold";
+            } else {
+                twoDiv.style.backgroundColor = "blue";
+            }
+
+        };
+        
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        };
+
+        
+    };
+
+
+
+
+
+
+</script>

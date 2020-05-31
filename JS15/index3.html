@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>键盘事件</title>
+        <style>
+            img {
+                position: absolute;
+                top: 50%;
+                left: 48%;
+            }
+
+            div {
+                position: absolute;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                top: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img src="car.png" alt="">
+
+        <form action="index2.html" method="get">
+            <input type="text" name="username">
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>
+<script>
+
+    // 键盘事件
+    // onkeydown 按下
+    // onkeypress 按
+    // onkeyup 键盘弹出
+
+    // 顺序 onkeydown>onkeypress>onkeyup
+    // 事件对象event的属性
+    // keyCode: 键盘的数字编码
+    // code: 键盘的内容
+    // ctrKey: 是否按了control键
+    // shiftKey: 是否按了shift键
+    // altKey: 是否按了alt键
+    // 有些浏览器的 onkeypress方法已经能识别大小写了
+    // 有些按键不能触发onkeypress, 如果想识别, 就用onkeydown 和 onkeyup
+
+    /*
+    document.onkeydown = function (e) {
+        var evt = e || window.event;
+        console.log(evt);
+        console.log("按下");
+    };
+
+    document.onkeypress = function (e) {
+        var evt = e || window.event;
+        console.log("按");
+    };
+
+    document.onkeyup = function (e) {
+        var evt = e || window.event;
+        console.log("弹出");
+    };
+    */
+
+    var carImg = document.querySelector('img');
+    var speed = 20;
+    document.onkeydown = function (e) {
+        var evt = e || window.event;
+        console.log(evt.keyCode);
+        switch (evt.keyCode) {
+            case 37: {
+                carImg.style.left = carImg.offsetLeft - speed + 'px';
+            }
+                break;
+            case 38: {
+                carImg.style.top = carImg.offsetTop - speed + 'px';
+            }
+                break;
+            case 39: {
+                carImg.style.left = carImg.offsetLeft + speed + 'px';
+            }
+                break;
+            case 40: {
+                carImg.style.top = carImg.offsetTop + speed + 'px';
+            }
+                break;
+            default:
+                break;
+        }
+    };
+
+    var oForm = document.querySelector('form');
+    var nameInput = oForm.firstElementChild;
+    // 表单提交事件
+    oForm.onsubmit = function () {
+        if (nameInput.value != "歪哥真**") {
+            alert("用户名不正确!");
+            return false;
+        }
+    };
+
+
+    // 1. 在一个输入框中输入div的数量, 生成div, 颜色随机, 位置随机, 大小随机(10-20), 每个div上都显示随机数字 (1-100)
+    // 2. 点击任意div, 在一个小方块中显示div上的数字
+    // 3. 点击任意div, 输入r,g,b值, 可以修改该div的颜色
+    // 4. 点击任意div, 可以通过方向键控制div的位置
+
+
+
+
+
+</script>

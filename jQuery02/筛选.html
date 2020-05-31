@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>筛选</title>
+    </head>
+    <body>
+        <ul>
+            <li>1</li>
+            <li class="two">2</li>
+            <li>3</li>
+            <li class="red">4</li>
+            <li>5</li>
+            <li>6</li>
+            <li class="red">7</li>
+            <li>8</li>
+            <li class="red">9</li>
+            <li class="red">10</li>
+        </ul>
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+
+    // eq()
+    // $('ul>li').eq(0).css('background', 'red');
+    // $('ul>li').eq(-1).css('background', 'red');
+
+    /*
+    var oUl = document.querySelector('ul');
+    // 转化成jQuery对象
+    var ul = $(oUl);
+    console.log(ul);
+    // jQuery对象转化成DOM元素
+    var dUl = $(oUl)[0];
+    console.log(dUl);
+    */
+
+    // first() 获取第一个元素
+    // $('ul>li').first().css('backgroundColor', 'red');
+
+    // last() 获取最后一个元素
+    // $('ul>li').last().css('backgroundColor', 'blue');
+
+    // hasClass() 判断是否包含类
+    // console.log($('ul>li').eq(1).hasClass('two'));
+
+    // filter(expr|obj|ele|fn)
+    // $('ul>li').filter('.red, .two').css("border", "2px solid black").css('color', 'red');
+
+    // $('ul>li').filter($('li:contains(2)')).css('backgroundColor', 'red');
+    // $('ul>li').filter(document.querySelector('ul>li')).css('backgroundColor', 'blue');
+
+    $('ul>li').filter(function (i) {
+        // 把内容对2取余为0的元素放入jQuery对象中
+        return $(this).text() % 2 == 0
+        
+    }).css('backgroundColor', 'purple');
+    
+
+
+
+
+
+</script>

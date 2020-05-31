@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li><strong>1</strong><strong>2</strong></li>
+    <li><strong>1</strong><strong>2</strong><strong>1</strong></li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+    <p>value:</p>
+<div id="parent">
+    <div>小明</div>
+    <div>18</div>
+    <div>爱好女</div>
+
+    <p id="test">666</p>
+    <p>999</p>
+
+    <ul id="slice">
+        <li>1</li>
+        <li>2
+            <ul>
+                <li>2.1</li>
+                <li>2.2</li>
+                <li>2.3</li>
+            </ul></li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="red">div</div>
+    <p>p</p>
+    <div class="red">div</div>
+    <p>p</p>
+    <div class="red">div</div>
+    <div>div</div>
+    <p>p</p>
+    <div id="next"></div>
+    <div>2</div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+
+    <div id="up"></div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+
+    <div id="down"></div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+
+    <div id="position">
+        <div id="child" style="position: fixed">888</div>
+    </div>
+    <p><span>hello</span></p>
+    <div><span>hi</span></div>
+
+    <p class="add"><span>hello</span></p>
+    <div class="add"><p></p></div>
+
+    <div id="a">
+        <p>1</p>
+        <div>2</div>
+        <p>3</p>
+    </div>
+    <p id="text">hello,world</p>
+
+</div>
+</body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+    //is(expr|obj|ele|fn)
+    $('ul>li').click(function () {
+        var hasTwoStrong = $(this).is(function (i) {
+            return $('strong',this).length ==2;
+        });
+        if (hasTwoStrong) {
+            $(this).css('backgroundColor','red');
+        } else {
+            $(this).css('backgroundColor','yellow');
+        }
+    });
+
+
+    //map(callback)
+    $('p').first().append($('#parent>div').map(function () {
+        return $(this).html();
+    }).get().join(","));
+
+
+
+    //has(expr|ele)
+    /*保留包含特定后代的元素，去掉那些不含有指定后代的元素。 .has()方法将会从给定的jQuery对象中重新创建一组匹配的对象。提供的选择器会一一测试原先那些对象的后代，含有匹配后代的对象将得以保留。*/
+
+
+    //not(expr|ele|fn)
+    $('#parent~p').not($('#test')[0]).css({
+        backgroundColor : 'red'
+    });
+
+
+       //slice(start, [end])
+    $('#slice>li').slice(0,2).css({
+        backgroundColor : 'red'
+    });
+
+    //children([expr])
+//    $('#slice').children('li:eq(1)').css({
+     //   background:"yellow"
+//    border:'2px solid purple'
+
+//    })
+
+
+
+    //closest(e|o|e) 查找ul,body
+    //$("li:first").closest(["ul", "body"]);
+
+    // find(e|o|e)
+    //搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。
+
+    //next([expr])
+//    $('.red').next('p').css({
+//        background:'red'
+//    });
+
+    // next([expr]) 元素后面所有同级元素
+    //$('#next').nextAll().css('background','red');
+
+
+    //返回值nextUntil([exp|ele][,fil]),第二个参数是在之前的集合上再过滤
+   // $('#up').nextUntil('#down').css('background','orange');
+    $('#up').nextUntil('#down','p').css('background','orange');
+
+
+    //offsetParent()
+//$('#child').css('backgroundColor','blue').offsetParent().css({
+//    width:200,
+//    height:200,
+//    backgroundColor:"red",
+//    border:"2px solid blue"
+//});
+
+    //parent([expr])找父元素
+
+    $('span').parent('div').css({
+        backgroundColor:'yellow'
+    });
+    //parents所有的父元素
+    console.log($('span').parents());
+    //范围到body,第二个参数更精确锁定元素
+    console.log($('span').parentsUntil('body','p'));
+
+    // prev([expr])紧邻前面的一个元素
+    //prevAll([expr])和nextAll()相反
+    //prevUntil([e|e][,f])和nextUntil([e|e][,f])相反
+
+    //siblings([expr])所有同辈元素
+    $('p.add').add('p.add>span').css({
+        border:'2px solid black'
+    });
+
+    var oSpan =$('<span>我是span</span>');
+    $('div.add>p').append(oSpan).add(oSpan).css({
+        border:"2px solid blue"
+    });
+
+    //addBack([exp])
+    $('#a').find('p').addBack().css({
+        border:'2px solid black'
+    });
+
+    var span = $('<span></span>').css('color','red');
+
+    $('#text').contents().wrap(span);
+
+    //end();
+    //回到最后一个破坏性操作之前
+
+
+
+
+</script>

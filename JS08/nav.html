@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .box {
+                position: relative;
+                width: 500px;
+                height: 200px;
+                margin: 200px auto 0;
+            }
+
+            ul {
+                overflow: hidden;
+                list-style: none;
+                font-size: 30px;
+            }
+
+            li {
+                float: left;
+                text-align: center;
+                width: 100px;
+                padding: 20px 0;
+            }
+
+            li>a {
+                text-decoration: none;
+            }
+
+            #scroll {
+                position: absolute;
+                height: 5px;
+                width: 100px;
+                background: red;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="box">
+            <ul>
+                <li><a href="javascript: void(0)">美女</a></li>
+                <li><a href="javascript: void(0)">新闻</a></li>
+                <li><a href="javascript: void(0)">帅哥</a></li>
+                <li><a href="javascript: void(0)">视频</a></li>
+                <li><a href="javascript: void(0)">社会</a></li>
+            </ul>
+            <div id="scroll"></div>
+        </div>
+
+    </body>
+</html>
+<script src="js/tween.js"></script>
+<script>
+
+    // 获取元素
+    var scrollDiv = document.getElementById('scroll');
+
+    // 获取所有li
+    var liArr = document.getElementsByTagName('li');
+
+    // 记录滚动条下标
+    var curIndex = 0;
+
+    for (var i = 0; i < liArr.length; i++) {
+
+        // 给每个li添加一个属性, 这样点击li的时候就能知道点击的是第几个li了
+        liArr[i].index = i;
+
+        // 给每个li添加点击事件
+        liArr[i].onclick = clickEvent();
+
+    }
+    
+    
+    function clickEvent() {
+
+        var t = 0;
+        var b = curIndex * 100;
+        var c = (this.index - curIndex) * 100;
+        var d = 100;
+
+        // 改变curIndex的值
+        curIndex = this.index;
+        
+        function move() {
+            t++;
+            scrollDiv.style.left = Tween.Bounce.easeInOut(t, b, c, d) + 'px';
+            if (t == d) {
+                clearInterval(timer);
+            }
+        }
+
+        var timer = setInterval(move, 10);
+
+
+
+    }
+    
+//    function test() {
+//        return 55;
+//    }
+//
+//    var a = test;
+//    var b = test();
+
+
+
+
+</script>
+
+

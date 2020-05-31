@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            div {
+                border-radius: 50%;
+                text-align: center;
+                position: absolute;
+            }
+            p {
+                width: 100px;
+                height: 35px;
+                text-align: center;
+                border: 2px solid gold;
+            }
+
+        </style>
+    </head>
+    <body>
+        输入数量 <input type="text" id="num">
+        <button id="create">创建div</button>
+        <p id="show"></p>
+        r: <input type="text" id="r">
+        g: <input type="text" id="g">
+        b: <input type="text" id="b">
+        <button id="change">改变颜色</button>
+    </body>
+</html>
+<script>
+    var numInput = document.querySelector('#num');
+    var createBtn = document.querySelector('#create');
+    var showP = document.querySelector('#show');
+    var rInput = document.querySelector('#r');
+    var gInput = document.querySelector('#g');
+    var bInput = document.querySelector('#b');
+    var changeBtn = document.querySelector('#change');
+    var selectDiv;
+
+    function randomNum(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    }
+    function randomColor() {
+        var r = randomNum(0, 255);
+        var g = randomNum(0, 255);
+        var b = randomNum(0, 255);
+        return "rgb(" + r + ',' + g + "," + b + ")";
+    }
+    createBtn.onclick = function () {
+        var num = numInput.value - 0;
+        if (isNaN(num)) return;
+
+        for (var i = 0; i < num; i++) {
+            var oDiv = document.createElement('div');
+            oDiv.style.width = randomNum(20, 50) + 'px';
+            oDiv.style.height = oDiv.style.width;
+            oDiv.innerHTML = randomNum(1, 100);
+            oDiv.style.lineHeight = oDiv.style.height;
+
+            oDiv.style.left = randomNum(0, 800) + 'px';
+            oDiv.style.top = randomNum(0, 800) + 'px';
+            oDiv.style.backgroundColor = randomColor();
+            
+            oDiv.onclick = function () {
+                selectDiv = this;
+                showP.innerHTML = this.innerHTML;
+            };
+
+            document.body.appendChild(oDiv);
+
+        }
+
+        changeBtn.onclick = function () {
+            var r = rInput.value - 0;
+            var g = gInput.value - 0;
+            var b = bInput.value - 0;
+            console.log(r, g, b);
+            if (!selectDiv) return;
+            selectDiv.style.backgroundColor = "rgb(" + r + ',' + g + "," + b + ")";
+        };
+
+
+    };
+
+
+
+
+
+</script>

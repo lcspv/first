@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="css/swiper-3.4.1.min.css">
+        <style>
+            .swiper-container {
+                width: 300px;
+                height: 500px;
+                margin: 100px auto 0;
+                border: 5px solid gold;
+            }
+
+            .swiper-slide>img {
+                width: 100%;
+                height: 100%;
+            }
+
+            /*.swiper-slide>img:nth-child(2) {*/
+                /*height: 2000px;*/
+            /*}*/
+
+            .swiper-pagination-bullet-active {
+                background: red;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/1.png" alt=""></div>
+                <div class="swiper-slide"><img src="img/2.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="img/3.jpeg" alt=""></div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+
+    </body>
+</html>
+<script src="js/swiper-3.4.1.min.js"></script>
+<script>
+
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+//        autoplay: 3000
+
+        // 如果需要滚动条
+//        scrollbar: '.swiper-scrollbar',
+//        autoHeight: true,
+        effect: "flip",
+        speed: 1000
+    });
+
+    console.log(mySwiper.progress);
+
+    document.onclick = function () {
+        console.log(mySwiper.progress);
+        console.log(mySwiper.slides[2].progress);
+    };
+
+
+
+
+
+</script>

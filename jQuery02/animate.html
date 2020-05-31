@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>动画</title>
+        <style>
+            div {
+                width: 300px;
+                height: 300px;
+                background-color: red;
+                display: none;
+                padding: 100px 0;
+                /* show() 对其没有效果 */
+                /*visibility: hidden;*/
+            }
+
+            .animate {
+                width: 200px;
+                height: 200px;
+                border: 2px solid gold;
+                background: blue;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <br>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <button id="toggle">show|hide</button>
+        <br>
+        <button id="down">slideDown</button>
+        <button id="up">slideUp</button>
+        <button id="downUp">slideDown|slideUp</button>
+        <br>
+        <button id="fadeIn">fadeIn</button>
+        <button id="fadeOut">fadeOut</button>
+        <button id="fadeToggle">fadeToggle</button>
+        <button id="fadeTo">fadeTo</button>
+
+        <div class="animate"></div>
+        <button id="animate">动画</button>
+        <button id="stop">停止动画</button>
+        <button id="finish">finish</button>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+
+    /*
+    jQuery.fx.interval 属性用于改变以毫秒计的动画运行速率。
+
+    默认值是 13 毫秒。该属性常用于修改动画运行的每秒帧数。降低这个值能够使动画在更快的浏览器中运行得更流畅，但这么做会影响性能 和 CPU。
+
+    注意：由于 jQuery 使用一个全局的间隔时间，为了使该属性生效，动画应该不在运行或者首先停止所有动画。
+
+    注意：该属性在支持 requestAnimationFrame 属性的浏览器中无效，比如 Google Chrome 11。
+    */
+
+
+
+    /*
+    $('#show').click(function () {
+
+        // speed:三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+
+        // easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+
+        // fn:在动画完成时执行的函数，每个元素执行一次。
+        // 改变的是透明度和宽高
+        $('div').show(5000, 'linear', function () {
+            $(this).text("动画完成");
+        });
+
+    });
+
+    $('#hide').click(function () {
+
+        $('div').hide('slow', function () {
+            $(this).text("动画完成");
+        });
+
+    });
+
+
+    $('#toggle').click(function () {
+
+        $('div').toggle(3000, function () {
+           $(this).text("动画完成!!!");
+        });
+        
+    });
+    */
+
+
+
+    // slideDown() slideUp(), slideToggle() 该边元素高度
+    /*
+    $.fx.interval = 100000;
+    $('#down').click(function () {
+        $('div').slideDown('slow', function () {
+            console.log("动画完成");
+        });
+    });
+
+    $('#up').click(function () {
+        $('div').slideUp(2000, function () {
+            console.log("动画完成");
+        });
+    });
+
+    $('#downUp').click(function () {
+
+        $('div').slideToggle('slow');
+    });
+    */
+
+
+
+    /*
+    // fadeIn() fadeOut() fadeToggle() fadeTo()
+    $('#fadeIn').click(function () {
+
+        $('div').fadeIn('slow', function () {
+            console.log("动画完成");
+        });
+
+    });
+
+    $('#fadeOut').click(function () {
+
+        $('div').fadeOut('slow', function () {
+            console.log("动画完成");
+        });
+
+    });
+
+    $('#fadeToggle').click(function () {
+
+        $('div').fadeToggle('slow', function () {
+            console.log("动画完成");
+        });
+
+    });
+
+    $('#fadeTo').click(function () {
+
+        $('div').fadeTo('slow', 0.5, function () {
+            console.log("动画完成");
+        });
+
+    });
+    */
+
+
+
+    // animate(params,[speed],[easing],[fn]) 动画
+    /*
+    $('#animate').click(function () {
+
+        $('.animate').animate({
+            width: "+=20",
+            height: "+=20",
+            // 必须使用驼峰命名法
+            borderRadius: '50%'
+        }, 2000, function () {
+            console.log("动画完成");
+        });
+
+    });
+    */
+
+    // 关闭页面上的所有动画效果
+    // $.fx.off = true;
+
+    // 动画队列, 一个一个执行
+    $('#animate').click(function () {
+        $('.animate').animate({
+            width: "+=100"
+        }, 2000);
+        // 延迟
+        // $('.animate').delay(3000);
+        $('.animate').animate({
+            height: "+=100"
+        }, 2000);
+        $('.animate').delay(3000);
+        $('.animate').animate({
+            borderRadius: "+=50"
+        }, 2000);
+
+    });
+
+
+    // clearQueue:如果设置成true，则清空队列。可以立即结束动画。
+    // jumpToEnd:如果设置成true，则完成队列。可以立即完成动画。
+    $('#stop').click(function () {
+
+        $('.animate').stop(false, true);
+
+    });
+
+    $('#finish').click(function () {
+        $('.animate').finish();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

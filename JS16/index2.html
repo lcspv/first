@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>学会调bug</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    // 1. 打log, console.log(), alert()
+    // 2. 断点调试
+    // 3. 暴力调试, 把不相关的代码先注释掉
+    // throw 抛出错误
+//    if (!a) {
+//        throw "a为空";
+//    }
+
+    // try中的代码如果有错误, 那么错误会被catch捕捉
+    try {
+        var a = 5;
+        var b = 20;
+        var oDiv = document.querySelector('div');
+
+        function sum() {
+            return arguments[0] + arguments[1];
+        }
+
+        oDiv.innerHTML = sum(a, b);
+
+    }
+    catch (error) {
+        console.log("这是第一个功能, 小鸟飞起的功能, 代码在第33行, 走到这里, 我很伤心的告诉你, 你丫写的代码有为题!!!");
+        console.log(error);
+    }
+
+    var c = 35;
+    console.log(c);
+
+
+//    var a = 5;
+//    var b = 20;
+//    var oDiv = document.querySelector('div');
+//
+//    function sum() {
+//        return arguments[0] + arguments[1];
+//    }
+//
+//    oDiv.innerHTML = sum(a, b);
+
+
+
+
+
+
+
+</script>

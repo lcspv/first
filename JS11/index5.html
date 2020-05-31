@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                height: 2000px;
+            }
+
+            div {
+                height: 100px;
+                background: red;
+            }
+
+            img {
+                width: 300px;
+                margin-top: 1200px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div></div>
+        <img _src="meinv.jpg">
+
+    </body>
+</html>
+<script>
+
+    // 窗口高度
+    console.log(document.documentElement.clientHeight);
+
+    var oImg = document.querySelector('img');
+
+    var flag = true;
+
+    // 图片加载完成时会走该方法
+    oImg.onload = function () {
+
+//        alert("加载完成!!!");
+        // 图片加载完成以后可以获得图片的高度
+        alert(oImg.clientHeight);
+    };
+
+    window.onscroll = function () {
+
+        flag && loadImage();
+
+    };
+    
+    function loadImage() {
+
+        // 浏览器窗口的高度
+        var height = document.documentElement.clientHeight;
+
+        // 图片距离窗口顶部的高度
+        var topH = oImg.offsetTop;
+
+        var scrollT = document.body.scrollTop;
+
+        if (scrollT >= topH - height) {
+            // 开始加载图片
+            var srcStr = oImg.getAttribute('_src');
+
+            oImg.src = srcStr;
+
+            // 移除没用的属性
+            oImg.removeAttribute('_src');
+
+            flag = false;
+        }
+        
+    }
+
+
+
+
+
+</script>

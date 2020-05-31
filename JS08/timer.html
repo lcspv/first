@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>定时器, 延迟定时器</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+
+    // 定时器: 作用, 每隔一段时间执行一次回调函数
+    // setInterval(), 返回一个Number类型的值, 作为定时器的id, 可以通过clearInterval(id)来清除定时器
+    // 第一个参数: 回调函数, 第二个参数: 间隔时间(单位是ms), 第三个->第n个参数是回调函数的参数
+
+//    var i = 0;
+//    function func1(a, b) {
+//        console.log(i++ + a + b);
+//        // 如果打印五次, 就清除定时器
+//        if (i == 5) {
+//            clearInterval(timerId);
+//        }
+//    }
+//    var timerId = setInterval(func1, 1000);
+//    var timerId = setInterval(func1, 1000, "a", "b");
+
+    // 注意, 这种方式只能调用全局函数
+//    var timerId = setInterval('func1("a", "b")', 1000);
+
+
+
+
+    // 延迟定时器: 作用, 延迟一段时间执行回调函数
+    // setTimeout(callback, time[, arg1[, arg2[,...]]]);
+    // 第一个参数: 回调
+    // 第二个参数: 延迟时间
+    // 后面的参数作为回调函数的参数
+
+    var j = 0;
+    function func2() {
+        console.log(++j);
+
+        timer = setTimeout(func2, 1000);
+
+        if (j == 5) {
+            // 清除延迟定时器
+            clearTimeout(timer);
+        }
+    }
+    var timer = setTimeout(func2, 1000);
+
+
+
+
+
+
+</script>

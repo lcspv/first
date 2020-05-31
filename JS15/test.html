@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 48%;
+        }
+    </style>
+</head>
+<body>
+        <img src="car.png" alt="">
+</body>
+</html>
+<script>
+    var carImg = document.querySelector('img');
+    var x = carImg.offsetLeft;
+    var y = carImg.offsetTop;
+    var car = {
+        firstKey: 0,
+        secondKey: 0
+    };
+    var speed = 20;
+    document.onkeydown = function (e) {
+        var evt = e || window.event;
+        car.secondKey = car.firstKey;
+        car.firstKey = e.keyCode;
+    };
+
+    document.onkeyup = function (e) {
+        var evt = e || window.event;
+
+    }
+    
+    function moveX(flag) {
+        if (flag) {
+            x += speed;
+        } else  {
+            x -= speed;
+        }
+        carImg.style.left = x + 'px';
+    }
+
+    function moveY(flag) {
+        if (flag) {
+            y += speed;
+        } else  {
+            y -= speed;
+        }
+        carImg.style.top = x + 'px';
+    }
+
+
+
+
+
+
+
+</script>

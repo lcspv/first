@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #big {
+                width: 1000px;
+                height: 100px;
+                border: 2px solid gold;
+                position: relative;
+                margin: 100px auto 0;
+            }
+
+            #small {
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                top: 5px;
+                border-radius: 50%;
+                left: 0;
+                /*background: red;*/
+                background-image: url('img/sese.jpg');
+                background-size: 100% 100%;
+            }
+
+
+
+
+        </style>
+    </head>
+    <body>
+
+        <div id="big">
+            <div id="small"></div>
+        </div>
+
+
+
+    </body>
+</html>
+<script src="js/tween.js"></script>
+<script>
+    //    tween.js的使用
+    // 让我们的动画具有平滑效果的补间动画库
+
+    // 效果说明
+    /*
+    *  Linear: 匀速, 无缓动效果
+    *  Quad: 二次方缓动
+    *  Cubic: 三次方缓动
+    *  Quart: 四次方缓动
+    *  Quint: 五次方缓动
+    *  Sine: 正弦曲线缓动
+    *  Expo: 指数曲线缓动
+    *  Circ: 圆形曲线缓动
+    *  Elastic: 指数衰减的二次方缓动
+    *  Back: 超过范围的三次方缓动
+    *  Bounce: 弹性缓动
+    *
+    * */
+
+    /*
+    * ease-in: 淡入效果
+    * ease-out: 淡出效果
+    * ease-in-out: 淡入淡出效果
+    * */
+
+    // 函数中的参数 (t, b, c, d);
+    // t: 当前的步数
+    // b: 初始值
+    // c: 值的变化量
+    // d: 总部数
+
+    // 函数调用
+    // e: Tween.Bounce.easeOut(1, 0, 500, 100); 返回值为当前的位置, Linear没有缓动效果
+
+
+
+
+
+</script>
+<script>
+
+    // 获取元素
+    var smallDiv = document.getElementById('small');
+
+    var t = 0, b = 0, c = 910, d = 1000;
+
+    function move() {
+        // 步数自增1
+        t++;
+
+        // 获取当前位置
+        var x = Tween.Elastic.easeInOut(t, b, c, d);
+
+        // 赋值
+        smallDiv.style.left = x + 'px';
+
+        // 走完所有步数
+        if (t == d) {
+            // 清除定时器
+            clearInterval(timer);
+            t = 0;
+            smallDiv.style.left = 0;
+            timer = setInterval(move, 10);
+        }
+
+    }
+
+    var timer = setInterval(move, 10);
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            div {
+                text-align: center;
+            }
+
+            #changeColor {
+                border: 2px solid red;
+
+                width: 200px;
+                height: 200px;
+                line-height: 200px;
+                margin: 20px auto;
+                font-size: 100px;
+                /* 扩展内容 */
+                position: absolute;
+                left: 0;
+                transition: 1s linear;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <label>来的人数:</label>
+            <input type="text" id="show">
+            <button onclick="wantToDoWhat()">想要干吗?</button>
+        </div>
+
+        <div>
+            数值1: <input type="text" id="num1">
+            数值2: <input type="text" id="num2">
+            <button onclick="maxNumber()">最大值</button>
+        </div>
+
+        <div>
+            年: <input type="text" id="year">
+            <button onclick="judge()">判断</button>
+        </div>
+
+        <div id="changeColor">50</div>
+
+        <div class="date">
+            年: <input type="text" id="Y">
+            月: <input type="text" id="M">
+            日: <input type="text" id="D">
+            <button onclick="whatDay()">判断</button>
+        </div>
+
+    </body>
+</html>
+<script>
+    // 程序执行的三大结构
+    // 1. 顺序结构 2. 分支结构 3. 循环结构
+    // 1. 顺序结构: 代码从上到下, 从左向右依次执行
+    // 2. 分支结构: 根据条件执行相应的代码
+    // 3. 循环结构: 在满足特定的条件下, 反复执行同一块代码
+
+    // 第一种情况
+    /*
+    *   if (条件表达式 || 布尔值) {
+    *        语句;
+    *   }
+    *   如果条件表达式值为真, 那么就执行大括号里面的语句
+    * */
+    var isBeauty = true;
+    if (isBeauty) {
+        console.log('晚上别想走!!!');
+    }
+
+    var a = 20, b = 30;
+    if (a++) {
+        var result = a++ * --b;
+        console.log("result = " + result);
+    }
+
+    /*
+      if (条件表达式) {
+            语句1;
+       } else {
+            语句2;
+       }
+
+       如果条件表达式为真, 则执行语句1(指令1), 否则执行语句2
+
+    */
+    if (a > b) {
+        console.log("a 比 b 大");
+    } else  {
+        console.log("b 比 a 大");
+    }
+
+
+    /*
+     if (条件表达式1) {
+     语句1;
+     } else if (条件表达式2) {
+     语句2;
+     } else if (条件表达式3) {
+     语句3;
+     } ... {
+
+     } else {
+
+      }
+
+
+        如果条件表达式1为真, 就执行语句1, 如果2为真就执行语句2, 。。。如果都不威震, 就执行else语句
+     */
+    // 函数: 具有特定功能的代码段
+    // 函数定义  function 函数名(参数列表) { 语句; };
+    function test() {
+        console.log("哈哈哈");
+    }
+    test(); // 函数的调用, 只有调用函数以后, 函数中的代码才会被执行
+    
+    function wantToDoWhat() {
+        // 根据id获取input元素
+        var showInput = document.getElementById('show');
+        // 获取输入框中的值, 并转化为数字类型
+        var num = showInput.value - 0;
+
+        if (num == 0) {
+            alert("看片!!!");
+        } else if (num == 1) {
+            alert("打台球!!!");
+        } else if (num == 2) {
+            alert("斗地主!!!");
+        } else if (num == 3) {
+            alert("打麻将!!!");
+        } else if (num == 4) {
+            alert("LOL");
+        } else {
+            alert("大保健||KTV");
+        }
+
+    }
+    
+    // 最大值函数
+    function maxNumber() {
+        var num1Input = document.getElementById('num1');
+        var num2Input = document.getElementById('num2');
+//        console.log(typeof num1Input.value);
+        // -0, 把字符串类型转化为number类型
+        var num1 = num1Input.value - 0;
+//        console.log(typeof num1);
+        // 除了+号, 其他元素可以把字符串转化成数字再进行运算
+        var num2 = num2Input.value - 0;
+        // 输出最大数
+//        if (num1 > num2) {
+//            alert("最大数为: " + num1);
+//        } else {
+//            alert("最大数为: " + num2);
+//        }
+        // 三目运算符  ? :
+        // boolean ? a : b;  如果boolean值为true 执行a, 反之执行b
+//        var maxNumber = num1 > num2 ? num1 : num2;
+//        alert("最大数为: " + maxNumber);
+
+        num1 > num2 ? alert("最大数: " + num1) : alert("最大数: " + num2);
+    }
+
+    // 求三个数的最大值
+    var num1 = 12, num2 = 14, num3 = 19;
+    var maxNum = (num1 > num2 ? num1: num2) > num3 ? (num1 > num2 ? num1: num2) : num3;
+    console.log("maxNum = " + maxNum);
+
+
+
+
+
+
+</script>
+
+<script>
+    // 在输入框中, 输入年份, 判断是平年还是闰年  闰年条件: 能被400整除 或者 能被4整除但不能被100整除
+    function judge() {
+        var yearInput = document.getElementById('year');
+        var year = yearInput.value - 0;
+
+        // 1
+//        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+//            alert(year + "是闰年!");
+//        } else {
+//            alert(year + "是平年!");
+//        }
+
+        // 2
+        (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? alert(year + "是闰年!") : alert(year + "是平年!");
+    }
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+
+    /*
+    var colorDiv = document.getElementById('changeColor');
+    function changeColor(sec) {
+
+        if (--sec > 0) {
+            colorDiv.innerHTML = sec;
+            colorDiv.style.left = colorDiv.offsetLeft + 10 + 'px';
+            // 延迟定时器
+            setTimeout("changeColor(" + sec + ")", 1000);
+
+        } else {
+            // 改变div颜色
+            colorDiv.style.backgroundColor = "blue";
+            colorDiv.innerHTML = "";
+        }
+        
+    }
+
+    // 延迟1000ms执行函数
+    setTimeout("changeColor(50)", 1000);
+    */
+
+</script>
+
+<script>
+
+    // 开关语句 switch...case...
+    /*
+    语法
+    switch (表达式) {
+        case 值1: {
+            代码1;
+        } break;
+        case 值2: {
+            代码2;
+        } break;
+        case 值3: {
+            代码3;
+        } break;
+        ...
+        default: {
+            默认情况。
+        } break;
+    }
+    */
+
+    /*
+    var aNum = 4;
+    // break: 结束switch。。。case语句, 如果不写break, 执行完对应的case语句后会执行下一个case语句
+    switch (aNum) {
+        case 1:
+            alert("楼层1");
+            break;
+        case 2:
+            alert("楼层2");
+            break;
+        case 3:
+            alert("楼层3");
+            break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            alert("高层楼");
+            break;
+        default:
+            alert("没有该楼层");
+            break;
+    }
+
+    */
+
+
+
+
+
+
+</script>
+
+<script>
+
+    function whatDay() {
+        // 获取input中的年月日
+        var year = document.getElementById('Y').value - 0;
+        var month = document.getElementById('M').value - 0;
+        var day = document.getElementById('D').value - 0;
+
+        // 如果是闰年 oneDay 就是 1, 否则 为 0
+        var oneDay = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 1 : 0;
+
+        switch (month) {
+            case 1:
+                alert("一年中的第" + day + "天");
+                break;
+            case 2:
+                alert("一年中的第" + (31 + day) + "天");
+                break;
+            case 3:
+                alert("一年中的第" + (31 + 28 + oneDay + day) + "天");
+                break;
+            case 4:
+                alert("一年中的第" + (31 + 28 + 31 + oneDay + day) + "天");
+                break;
+            case 5:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + oneDay + day) + "天");
+                break;
+            case 6:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + oneDay + day) + "天");
+                break;
+            case 7:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + oneDay + day) + "天");
+                break;
+            case 8:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + 31 + oneDay + day) + "天");
+                break;
+            case 9:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + oneDay + day) + "天");
+                break;
+            case 10:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + oneDay + day) + "天");
+                break;
+            case 11:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + oneDay + day) + "天");
+                break;
+            case 12:
+                alert("一年中的第" + (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + oneDay + day) + "天");
+            default:
+                break;
+
+        }
+        
+    }
+
+
+
+
+
+
+
+</script>

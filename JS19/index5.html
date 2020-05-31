@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <p></p>
+
+    </body>
+</html>
+<script>
+    // 设备事件, 需要设备硬件支持
+    // motion: 移动, 动作
+    var oP = document.querySelector('p');
+
+    var startA = {
+        x: 0,
+        y: 0,
+        z: 0
+    };
+    var max = 25;
+
+    window.ondevicemotion = function (e) {
+        // 重力加速度
+        var acceleration = e.accelerationIncludingGravity;
+        oP.innerHTML = acceleration.x + "<br>" + acceleration.y + "<br>" + acceleration.z;
+
+        var endA = new Object;
+        endA.x = acceleration.x;
+        endA.y = acceleration.y;
+        endA.z = acceleration.z;
+
+        var result = Math.abs(endA.x - startA.x) >= max || Math.abs(endA.y - startA.y) >= max || Math.abs(endA.z - startA.z) >= max;
+
+        if (result) {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        startA.x = endA.x;
+        startA.y = endA.y;
+        startA.z = endA.z;
+
+    };
+
+
+
+
+
+</script>

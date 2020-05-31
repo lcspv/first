@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>sessionStorage</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    // sessionStorage对象存储某个特定的会话数据, 当浏览器关闭, 或者相关网页窗口关闭的时候, 数据会被清除
+
+    // 添加更新数据
+
+    sessionStorage.name = "歪哥";
+    sessionStorage['age'] = 18;
+    sessionStorage.setItem("gender", "male");
+
+    // 移除数据
+    sessionStorage.removeItem("gender");
+
+    // 获取数据
+    console.log(sessionStorage.name);
+    console.log(sessionStorage['age']);
+    console.log(sessionStorage.getItem('age'));
+
+    // 清除数据
+    // sessionStorage.clear();
+
+    delete sessionStorage.name;
+
+
+    // delete
+    var obj = {
+        x: 1,
+        y: 2,
+        z: 3
+    };
+
+    console.log(obj);
+    delete obj.x;
+    console.log(obj);
+
+
+
+
+
+
+
+
+
+</script>

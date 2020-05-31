@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>闭包</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    // 闭包
+    // 闭包是一个拥有许多变量和绑定了这些变量的环境的表达式(通常是一个函数)
+    // 个人理解: 能够读取其它函数内部变量的函数
+    var c = 20;
+    var d = 15;
+//    var a = 15;
+
+    function f1() {
+        var a = 5;
+        var b = 10;
+
+
+//        console.log(a, b);
+        function f2() {
+            var x = 20;
+            var y = 30;
+            console.log(++a);
+            return a;
+        }
+        // 返回的f2就是一个闭包
+        return f2;
+    }
+
+//    f1();
+    var g = f1();
+    g();
+    g();
+    g();
+
+    // 注意g和h访问的是两块不同的内存
+    var h = f1();
+    h();
+    h();
+    h();
+
+    function test() {
+        var x = 50;
+        console.log(++x);
+
+    }
+//    test();
+//    test();
+
+
+    var setName, setAge, getName, getAge;
+    function person() {
+        var name = "小强";
+        var age = 18;
+
+        // 这几个函数都是闭包
+        setName = function (str) {
+            name = str;
+        };
+        setAge = function (num) {
+            age = num;
+        };
+
+        getName = function () {
+            return name;
+        };
+        getAge = function () {
+            return age;
+        };
+    }
+    person();
+    console.log(getName(), getAge());
+    setName("小王");
+    console.log(getName(), getAge());
+
+
+</script>

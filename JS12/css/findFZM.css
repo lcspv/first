@@ -1,0 +1,71 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#box {
+    position: relative;
+    width: 600px;
+    height: 650px;
+    border: 5px solid gold;
+    margin: 100px auto 0;
+}
+
+#time {
+    float: left;
+}
+
+#score {
+    float: right;
+}
+
+#time, #score {
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+#show {
+    width: 600px;
+    height: 600px;
+    clear: both;
+    background-color: yellow;
+}
+
+#show>img {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+#menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#start {
+    position: absolute;
+    background: red;
+    font-size: 50px;
+    line-height: 80px;
+    height: 80px;
+    width: 4em;
+    padding: 0 1em;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    left: 0; right: 0; top: 0; bottom: 0; margin: auto;
+}
+
+
+
+
+
+
+

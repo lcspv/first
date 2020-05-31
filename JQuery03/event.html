@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>事件</title>
+        <style>
+            #hover {
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+            }
+            .active {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a">1</div>
+        <p class="a">2</p>
+        <div class="a">3</div>
+        <p class="a">3</p>
+
+    <button id="one">只能碰我一次</button>
+    <div id="hover"></div>
+    <div class="parent">
+        <input type="text" class="child">
+    </div>
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+        //在DOM加载完成时运行的代码,可以这样写
+//    $(document).ready(function () {
+//
+//    });
+//
+//    $(function (waige) {
+//        waige('div').css({
+//            height:300,
+//            width:300,
+//            background:"red"
+//        });
+//    })
+
+        //return false:阻止默认行为和冒泡
+        //e.stopPropagation()阻止冒泡
+        //e.preventDefault 阻止默认行为
+    $('.a').on('click mouseover',{name:"小强",age:18},
+    function (e) {
+        console.log(e.data.name,e.data.age);
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+        var color = "rgb("+ r + "," + g + ","+ b + ")";
+        $(this).css({
+            backgroundColor : color
+        });
+
+
+    });
+
+       // off(events,[selector],[fn])移除事件
+    $('.a').on({
+        click:function () {
+            alert("点击");
+        },
+        contextmenu:function () {
+            alert("右键");
+        }
+    },{name:"waige"});
+
+    $('#one').one('click',function () {
+        alert("Bye Bye");
+    });
+//trigger(type,[data])在每一个匹配的元素上触发某类事件。
+        //triggerHandler(type, [data])
+
+
+       /* 这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作，也不会产生事件冒泡。
+
+        这个方法的行为表现与trigger类似，但有以下三个主要区别：
+
+        * 第一，他不会触发浏览器默认事件。
+
+        * 第二，只触发jQuery对象集合中第一个元素的事件处理函数。
+
+        * 第三，这个方法的返回的是事件处理函数的返回值，而不是据有可链性的jQuery对象。此外，如果最开始的jQuery对象集合为空，则这个方法返回 undefined 。*/
+
+//       $('#hover').hover(function () {
+//            $(this).addClass('active');
+//        },function () {
+//            $(this).removeClass('active');
+//        })
+    //blur()失去焦点
+    //change()内容发生改变,针对input,textarea,select
+
+    $('.parent').css({
+        width:200,
+        height:200,
+        border:'2px solid black'
+    });
+
+        $('.child').css({
+            width:50,
+            height:50,
+            background:"purple"
+        });
+        //focusin事件和focus区别在于他可以检测到子集焦点能否获得的情况
+    $('.parent').focusin(function () {
+        $(this).children().slideUp(2000);
+    })
+
+
+
+
+
+</script>

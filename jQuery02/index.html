@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>文档处理</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            #a {
+                height: 35px;
+                background-color: black;
+            }
+            #b {
+                height: 50px;
+                background-color: blue;
+            }
+
+            /*
+            .wrap {
+                position: absolute;
+                border: 5px solid blue;
+            }
+            */
+
+            .p {
+                width: 500px;
+                height: 100px;
+                border: 5px solid gold;
+            }
+
+            .wrapAll {
+                border: 10px solid purple;
+            }
+
+            .wrapText {
+                border: 2px solid gold;
+                padding: 10px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p>哈哈</p>
+        <div>div1 </div>
+        <div>div2 </div>
+        <p>呵呵</p>
+
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+        <div id="a"></div>
+        <div id="b"></div>
+
+        <div class="wrap">abc</div>
+    
+        <div class="container">
+            <div class="inner">h el lo</div>
+            <div class="inner">b y e</div>
+        </div>
+
+        <div class="p">
+            <p>hello</p>
+            <p>hi</p>
+            <p>nice to meet you</p>
+        </div>
+
+        <div class="up"><span>666</span></div>
+        <div class="down">777</div>
+
+        <button>克隆自己</button>
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+
+    // append(content|fn)
+    // $('div').append('hello, world!');
+    /*
+    $('div').append(function (index, html) {
+        console.log(index, html);
+        if (0 == index) {
+            return "hello1";
+        } else {
+            return "<p>haha</p>";
+        }
+    });
+    */
+
+    // appendTo()
+    // $('p').appendTo('div');
+    // $('<p>hehe</p>').appendTo('div');
+    // 创建元素的两种方式
+    // var p = $('<p></p>');
+    /*
+    var p = $('<p />');
+    p.html("haha");
+    p.appendTo('div');
+    */
+
+    // console.log($('li:eq(1)'));
+
+    // 链式操作
+    // 每个方法返回的都是this(对象本身)
+    /*
+    $("<span />")
+            .html("hello")
+            .appendTo('ul>li')
+            .css({
+                color: 'red'
+            })
+            .first()
+            .css({
+                color: 'blue'
+            });
+    */
+
+    // prepend(content|fn) 向每个匹配的元素内部前置内容。
+    // prependTo(content|fn)
+    // $('p').prependTo('div:eq(1)');
+
+    // after(content|fn)
+    // $('ul>li').after('<li>hello</li>').css('backgroundColor', 'red');
+
+    // before(content|fn)
+    /*
+    $('ul>li').before(function (i, h) {
+        console.log(i, h);
+        var li = $('<li/>').css('backgroundColor', 'yellow');
+        return li;
+    }).css('backgroundColor', 'red');
+    */
+
+    // 把a插到b后面
+    // $('#a').insertAfter($('#b'));
+    // 把a插到b前面
+    // $('#a').insertBefore('#b');
+    // $('#a,#b').insertBefore('li');
+    // $('li').insertAfter('#a,#b');
+
+    // wrap(html|element|fn)
+    // $('p').wrap('<div class="wrap"></div>');
+    /*
+        var oDiv = document.createElement('div');
+        oDiv.className = "wrap";
+        $('p').wrap(oDiv);
+    */
+
+     // $('p').wrap(document.getElementsByClassName('wrap')[0]);
+     // $('p').wrap($('.wrap'));
+
+    /*
+    $('.container>.inner').wrap(function (i, v) {
+        console.log(i, v);
+        var str = $(this).html();
+        // console.log(str.replace(/\s/g, ""));
+        str = str.replace(/\s/g, "");
+        return "<div class=" + str + ">" + "</div>";
+    });
+    */
+
+    // unwrap() 去掉父级元素
+    // $('p').unwrap();
+
+    // 注意 会破坏原始文档的语义品质(和wrap的爹的数量不一样)
+    // $('.p>p').wrapAll("<div class='wrapAll'></div>");
+
+    // wrapInner() 给所有孩子找一个爹(注意一个爹), 自己是爷爷
+    // $('ul>li').wrapInner("<div class='wrapText'></div>");
+    // $('ul').wrapInner("<div class='wrapText'></div>")
+    /*
+    $('ul>li').wrapInner(function (i) {
+        console.log(i);
+        var wrap = $("<div class='wrapText'></div>");
+        if (i % 2 == 0) wrap.css("color", 'blue');
+        return wrap;
+    });
+    */
+
+    // replaceWith(content|fn)
+    // 将ul下的li都替换成div
+    // $('ul>li').replaceWith('<div>1</div>');
+
+    // $('ul>li:eq(0)').replaceWith($('ul>li:eq(2)'));
+
+    /*
+      cloneNode(true) 会拷贝标签和内容, 如果不写或写成false值拷贝标签
+    var oP = document.querySelector('p').cloneNode(true);
+    document.body.appendChild(oP);
+    */
+
+    // replaceAll(selector)
+    // 用div替换掉所有的li
+    // $('<div>666</div>').replaceAll('li');
+
+    // empty() 清空元素的所有子节点
+    // $('li').empty();
+
+
+    $('li').click(liClick);
+
+    function liClick() {
+        $(this).css('backgroundColor', 'red');
+    }
+
+    // 删除元素, jQuey会保存下被删除的元素, 但是绑定的事件不会被保留
+    /*
+        var lis = $('li').remove();
+        $('ul').append(lis);
+    */
+
+
+    // detach([expr]) 这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素。与remove()不同的是，所有绑定的事件、附加的数据等都会保留下来。
+    /*
+    var lis = $('li').detach();
+    $('ul').append(lis);
+    */
+
+
+    $('.up').click(function () {
+        $(this).css('backgroundColor', 'red');
+    });
+
+    $('.up>span').css('color', 'yellow').click(function () {
+        $(this).css('color', 'blue');
+    });
+
+
+    // 1:一个布尔值（true 或者 false）指示事件处理函数是否会被复制。 2:一个布尔值，指示是否对事件处理程序和克隆的元素的所有子元素的数据应该被复制
+    $('.down').append($('.up').clone(true, true).css('backgroundColor', 'blue'));
+
+    $('button').click(function () {
+        $(this).clone(true).insertAfter($(this));
+    });
+
+
+
+
+</script>

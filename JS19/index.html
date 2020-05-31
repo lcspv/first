@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            #red {
+                width: 200px;
+                height: 200px;
+                background: red;
+            }
+
+            #big {
+                width: 400px;
+                height: 400px;
+                background: yellow;
+            }
+
+            #small {
+                width: 200px;
+                height: 200px;
+                background: blue;
+            }
+
+            #in {
+                width: 100px;
+                height: 100px;
+                background: red;
+            }
+
+            #purple {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background: purple;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div onclick="test()">点我</div>
+        <button>继续点我</button>
+
+        <div id="red"></div>
+
+        <div id="big">
+            <div id="small">
+                <div id="in"></div>
+            </div>
+        </div>
+
+        <div id="purple">
+
+        </div>
+    </body>
+</html>
+<script>
+    // 事件
+    // 设备检测到的用户的行为
+    // 事件流: 页面上的事件的执行顺序, 分为捕获和冒泡两个阶段(ie下只有冒泡阶段)
+    // 给元素绑定事件的方式
+    // 方式1
+
+    // 通过给元素的行内属性赋值来添加点击事件
+    function test() {
+        alert(666);
+    }
+
+    // 方式2
+    var btn1 = document.querySelector('button');
+    btn1.onclick = function () {
+        alert(888);
+    };
+
+    // 方式3
+    // 第一个参数: eventType: 事件类型, click, mouseover, mouseout... 去掉on就是事件类型
+    // 第二个参数: 回调函数, 当dom元素监听到事件以后会执行回调
+    // 第三个参数: 事件触发的阶段, 如果为true事件发生在捕获阶段, 如果为false事件发生在冒泡阶段
+    // 捕获阶段: 从大范围到小范围传递
+    // 冒泡阶段: 从小范围到大范围传递
+    var redDiv = document.querySelector('#red');
+    redDiv.addEventListener("click", function (e) {
+        console.log("冒泡阶段");
+    }, false);
+    redDiv.addEventListener('click', function (e) {
+        console.log("捕获阶段");
+    }, true);
+
+    // 获取元素
+    var bigDiv = document.querySelector('#big');
+    var smallDiv = document.querySelector('#small');
+    var inDiv = document.querySelector('#in');
+
+    bigDiv.addEventListener('click', function () {
+        alert("黄");
+    }, true);
+
+    smallDiv.addEventListener('click', function (e) {
+        // 阻止事件继续传递
+        e.stopPropagation();
+        // ie下阻止冒泡事件继续传递
+        // e.cancelBubble = true;
+        alert("冒泡阶段蓝色");
+    }, true);
+
+    /*
+    smallDiv.addEventListener('click', function () {
+        alert("捕获阶段蓝色");
+    }, true);
+    */
+    inDiv.addEventListener('click', function (e) {
+        alert("捕获阶段红色");
+//        e.stopPropagation();
+    }, true);
+
+    // ie8以下
+    // 移除事件
+    /*
+    inDiv.detachEvent('click', function () {
+        
+    });
+    // 添加事件
+    inDiv.attachEvent('click', function () {
+        
+    });
+    */
+
+    var purpleDiv = document.querySelector('#purple');
+    purpleDiv.addEventListener('click', test, false);
+
+
+    // 移除事件
+    // 移除事件时, 事件类型, 回调函数, 还有阶段必须一致, 回调函数必须是同一个函数, 必须是外部定义的函数
+    purpleDiv.removeEventListener('click', test, false);
+
+    function test() {
+        alert("111");
+    }
+
+
+
+
+
+
+</script>

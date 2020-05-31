@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#box {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    border: 2px solid black;
+    margin: 200px auto 0;
+    overflow: hidden;
+}
+
+#content {
+    width: 1400px;
+    height: 500px;
+    position: absolute;
+}
+
+#content>img {
+    width: 350px;
+    height: 500px;
+    float: left;
+}
+
+ul {
+    list-style: none;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 60px);
+}
+
+ul>li {
+    float: left;
+    height: 6px;
+    width: 30px;
+    background: gainsboro;
+    margin: 0 5px;
+}
+
+li>span {
+    display: block;
+    height: 6px;
+    width: 0px;
+    background: red;
+}

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #up {
+                width: 200px;
+                height: 200px;
+                background: red;
+            }
+
+            #blue {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background: blue;
+            }
+
+            .a {
+                width: 20px;
+                height: 20px;
+                background: blue;
+                border-radius: 50%;
+                position: absolute;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <button onclick="test()">点击</button>
+        <br>
+        <input type="text" id="text">
+        <button id="focus">聚焦</button>
+        <button id="blur">失焦</button>
+        <br>
+        <button id="event">事件对象</button>
+
+        <div id="up"></div>
+        <div id="blue"></div>
+
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+        <div class="a"></div>
+
+    </body>
+</html>
+<script>
+    // 事件
+    // 鼠标事件
+    // 键盘事件
+    // 其它事件
+
+    // 添加事件的方式
+    // 1. 通过给元素添加行内属性绑定事件
+    // 2. 通过js给元素添加事件
+
+    function test() {
+        alert(666);
+    }
+
+    // 获取元素
+    var textInput = document.querySelector('#text');
+    var focusBtn = document.querySelector('#focus');
+    var blurBtn = document.querySelector('#blur');
+    focusBtn.onclick = function () {
+
+        // 聚焦方法
+        textInput.focus();
+    };
+    
+    blurBtn.onclick = function () {
+
+        // 失去焦点
+        textInput.blur();
+    };
+
+    textInput.onfocus = function () {
+        if (!textInput.flag) {
+            alert("来了");
+            textInput.flag = true;
+        }
+    };
+    
+    textInput.onblur = function () {
+
+        if (textInput.flag) {
+            alert("走了");
+            textInput.flag = false;
+        }
+
+    };
+
+    /*
+    var timerId, i = 0;
+    window.onblur = function () {
+        clearInterval(timerId);
+    };
+    window.onfocus = function () {
+//        console.log(22222);
+        timerId = setInterval(function () {
+            console.log(i++);
+        }, 1000);
+    };
+    timerId = setInterval(function () {
+        console.log(i++);
+    }, 1000);
+    */
+
+
+    // 事件对象
+    // 给元素绑定事件的时候, 系统会自动创建一个事件对象
+    var eventBtn = document.querySelector('#event');
+    eventBtn.onclick = function (e) {
+        // 兼容写法
+        var evt = e || window.event;
+//        console.log(e);
+//        console.log(event);
+//        console.log(window.event);
+        console.dir(evt);
+        // 点击的位置距离窗口左上角的距离
+        console.log(evt.clientX);
+        console.log(evt.clientY);
+
+
+        // 距离屏幕左上角的距离
+        console.log(evt.screenX);
+        console.log(evt.screenY);
+
+        // 事件的类型
+        console.log(evt.type);
+
+        // 目标元素
+        console.log(evt.target);
+    };
+
+    // 鼠标点击事件
+    var upDiv = document.querySelector('#up');
+    upDiv.onmousedown = function () {
+        console.log("按下!!!");
+    };
+    upDiv.onmouseup = function () {
+        console.log("抬起!!!");  
+    };
+    upDiv.onclick = function () {
+        console.log("完成了点击!!!");
+    };
+
+    var blueDiv = document.querySelector('#blue');
+    // 鼠标移动事件
+    /*
+    document.onmousemove = function (e) {
+        var evt = e || window.event;
+//        console.log(evt.clientX, evt.clientY);
+        blueDiv.style.left = evt.clientX + 'px';
+        blueDiv.style.top = evt.clientY + 'px';
+    };
+    */
+
+    // 后面会覆盖前面的方法
+//    document.onmousemove = function () {
+////        console.log(666);
+//    };
+    
+    function randomColor() {
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
+    var aDivs = document.querySelectorAll('.a');
+    for (var i = 0; i < aDivs.length; i++) {
+        aDivs[i].style.backgroundColor = randomColor();
+    }
+
+    document.onmousemove = function (e) {
+        
+        var evt = e || window.event;
+
+        // 前面div的位置依次赋值给后面的div
+        for (var i = aDivs.length - 1; i > 0; i--) {
+            aDivs[i].style.left = aDivs[i-1].style.left;
+            aDivs[i].style.top = aDivs[i-1].style.top;
+        }
+
+        aDivs[0].style.left = evt.clientX + 'px';
+        aDivs[0].style.top = evt.clientY + 'px';
+        
+    }
+
+
+    
+
+
+</script>

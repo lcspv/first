@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            html {
+                font-size: 6.25em;
+            }
+
+            /*body {*/
+                /*height: 20rem;*/
+            /*}*/
+
+            div {
+                width: 2rem;
+                height: 2rem;
+                background: red;
+                font-size: .16rem;
+                position: absolute;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div></div>
+
+    </body>
+</html>
+<script>
+    var oDiv = document.querySelector('div');
+    // 开始点
+    var starP = new Object();
+    // 结束点
+    var endP = new Object;
+    // 触摸开始
+    oDiv.addEventListener('touchstart', function (e) {
+        console.log("触摸开始");
+        var touch = e.changedTouches[0];
+        // 记录开始位置
+        starP.x = touch.pageX;
+        starP.y = touch.pageY;
+    });
+
+    // 触摸点移动
+    oDiv.addEventListener('touchmove', function (e) {
+        console.log("触摸点移动");
+        // 页面上的所有触摸点
+//        console.log(e.touches);
+        /*
+        this.innerHTML = e.touches.length;
+        // 目标元素上的触摸点
+        this.innerHTML += "<br>" + e.targetTouches.length;
+        // 改变的点
+        this.innerHTML += "<br>" + e.changedTouches.length;
+        */
+
+        var touch1 = e.changedTouches[0];
+        // 终点位置
+        endP.x = touch1.pageX;
+        endP.y = touch1.pageY;
+
+        // 计算两点之间横向距离和竖向距离的差
+        var x = endP.x - starP.x;
+        var y = endP.y - starP.y;
+
+        // 给div赋值
+        this.style.left = this.offsetLeft + x + 'px';
+        this.style.top = this.offsetTop + y + 'px';
+
+
+        // 把结束点的值赋值给开始点
+        starP.x = endP.x;
+        starP.y = endP.y;
+
+
+
+        // 触摸点相对于页面左上角的位置
+        // this.innerHTML = touch1.pageX + " " + touch1.pageY;
+
+        // 相对于可视区域左上角的位置
+        // this.innerHTML = touch1.clientX + "<br>" + touch1.clientY;
+
+        // 相对于设备屏幕左上角的位置
+        // this.innerHTML = touch1.screenX + "<br>" + touch1.screenY;
+
+        // 触摸点的标识
+        // console.log(touch1.identifier);
+
+
+
+
+        e.preventDefault();
+        
+    });
+
+    // 触摸结束
+    oDiv.addEventListener('touchend', function () {
+        console.log("触摸结束");
+    });
+
+    // 触摸取消
+    // 会在高级事件触发的时候触发该方法, 比如电话来了, 来短信了, 来视频了。。。
+    // 可以在该方法中保存数据, 暂停游戏等等
+    oDiv.addEventListener('touchcancel', function () {
+        console.log("触摸取消");
+    });
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>第一个页面</title>
+    </head>
+    <body>
+        <a href="index2.html">进入下一页</a>
+        <button id="forward">进入下一页</button>
+    </body>
+</html>
+<script>
+    var forwardBtn = document.querySelector('#forward');
+    forwardBtn.onclick = function () {
+        console.log(history, history.length);
+        // 前进, 效果同浏览器上的前进按钮
+//        history.forward();
+    };
+
+
+
+
+</script>

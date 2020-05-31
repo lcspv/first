@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>localStorage</title>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    // localStorage 是html5中新出现的本地存储对象, 该对象的内容存储没有时间限制
+    console.log(window.localStorage);
+    // 可以打印localStorage中存储的数据的个数
+    console.log(localStorage.length);
+    // 设置添加数据
+    localStorage.name = "歪哥";
+    localStorage["age"] = 18;
+
+    // 获取数据
+    console.log(localStorage.name);
+    console.log(localStorage.age);
+    console.log(localStorage['age']);
+
+    // 添加或设置数据
+    localStorage.setItem("gender", "male");
+    console.log(localStorage);
+
+    // 删除数据
+    localStorage.removeItem("bestScore");
+
+    // 通过 localStorage.key(index) 获取属性的key值
+    console.log(localStorage.key(2));
+
+    // 获取所有的数据 key-value
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        console.log(key, localStorage.getItem(key));
+    }
+
+    // 清除所有数据
+//    localStorage.clear();
+
+    localStorage.bestScore = 2000;
+
+
+
+
+</script>
