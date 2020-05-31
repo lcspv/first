@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            div {
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+                margin: 100px auto 0;
+                background-color: red;
+            }
+
+            .active1 {
+                background-color: blue;
+            }
+
+            .active2 {
+                background-color: yellow;
+            }
+
+            .border {
+                border-radius: 50%;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <button>添加class</button>
+        <button>移除class</button>
+        <button class="b c d f">添加|移除class</button>
+
+        <p class="a b c c d d f f">哈喽</p>
+
+        <div>1</div>
+        <div>2</div>
+    </body>
+</html>
+<script src='js/jquery.js'></script>
+<script>
+
+    $('button').eq(0).click(function () {
+
+        // 添加类名
+        // $('div').addClass('active');
+        // 多个类名之间用空格隔开
+        // $('div').addClass('active border');
+
+        $('div').addClass(function (i, v) {
+
+            // console.log(i, v);
+            // index() 指 在同级元素中第几位 , 从 0 开始计数
+            console.log($(this).index());
+            return "active" + (i + 1) + " " + "border";
+        });
+
+
+    });
+
+    // 点击事件
+    $('button:eq(1)').on('click', function () {
+
+        // 移除所有的类
+        // $('div').removeClass();
+
+        // $('div').removeClass('border');
+
+        $('p').removeClass(function (i, v) {
+            // console.log(i, v);
+//            console.log($(this).prev());
+            // 删除与上个元素重复的类名
+            // return $(this).prev().prop('class');
+            return $(this).prev().attr('class');
+        });
+
+    });
+
+    var count = 0;
+    var flag = true;
+    $('button:eq(2)').click(function () {
+        count++;
+        // 如果存在（不存在）就删除（添加）一个类。
+        // $('div').toggleClass('active1');
+        // $('div').toggleClass("active1 border");
+
+        // 第二个参数可选, 是bool值, 如果为true, 就是添加类, 否则是删除类
+        // $('div').toggleClass('active1', true);
+
+        // 连点三下添加
+        // $('div').toggleClass('active1', count % 3 == 0);
+
+
+        // 第一个参数: 下标
+        // 第二个参数: 旧的class值
+        // 第三个参数: 可选参数的bool值(toggleClass方法第二个可选参数)
+        $('div').toggleClass(function (i, c, s) {
+            console.log(i, c, s);
+            flag = !s;
+            return "active" + (i + 1) + " " + "border";
+        }, flag);
+
+    });
+
+
+
+
+
+
+
+</script>

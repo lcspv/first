@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #big {
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+                overflow: scroll;
+            }
+
+            #small {
+                width: 600px;
+                height: 600px;
+                background-color: red;
+            }
+
+            .yellow {
+                padding: 20px;
+                width: 150px;
+                height: 150px;
+                border: 2px solid blue;
+                background-color: yellow;
+                margin: 50px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="big">
+            <div id="small"></div>
+        </div>
+
+        <div class="yellow"></div>
+        <div class="yellow"></div>
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+    $(document).click(function () {
+
+        // 设置垂直方向和水平方向滚动的距离
+        console.log($('#big').scrollTop());
+        console.log($('#big').scrollLeft());
+
+        // 设置滚动距离
+        $('#big').scrollTop(200);
+        $('#big').scrollLeft(200);
+
+    });
+
+    // 获取高度 (css中设置的height)
+    console.log($('.yellow').height());
+
+    // 设置高度
+    // $('.yellow').height(200);
+    $('.yellow').height(function (i, v) {
+        console.log(i, v);
+        return (i + 1) * v;
+    });
+
+    // width() 和 height() 用法一样
+
+    // innerHeight() 获取元素内部区域高度 (包含padding, 不包含border)
+    // innerWidth() 获取元素内部区域宽度 (包含padding, 不包含border)
+    console.log($('.yellow').innerHeight());
+    console.log($('.yellow').innerWidth());
+
+    // outerHeight() 获取元素外部高度 (包含padding, border)
+    // outerWidth() 获取元素外部宽度 (包含padding, border)
+    console.log($('.yellow').outerHeight());
+    console.log($('.yellow').outerWidth());
+
+    // 如果参数写true, 包含margin
+    console.log($('.yellow').outerHeight(true));
+    console.log($('.yellow').outerWidth(true));
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

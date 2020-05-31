@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                height: 3000px;
+            }
+
+            div {
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+            }
+
+            p {
+                width: 3em;
+                height: 2em;
+                line-height: 2em;
+                background-color: yellow;
+            }
+
+            #parent {
+                position: relative;
+                width: 500px;
+                height: 500px;
+                border: 2px solid black;
+            }
+
+            #child {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: blue;
+                left: 50px;
+                top: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <p>大家好</p>
+
+        <div id="parent">
+            <div id="child"></div>
+        </div>
+
+    </body>
+</html>
+<script src="js/jquery.js"></script>
+<script>
+    // css(name|pro|[,val|fn])
+    // 添加css样式
+    // $('div').css('backgroundColor', 'red');
+    // 获取值
+    // console.log($('div').css('backgroundColor'));
+
+    /*
+    $('div').css({
+        width: 300,
+        height: 600,
+        backgroundColor: 'blue'
+    });
+    */
+
+
+    $('div').css('width', function (i, v) {
+        console.log(i, v);
+        // parseInt, 解析整数, parseFloat解析小数
+        return (i + 1.2) * parseInt(v);
+    });
+
+    $('div').click(function (e) {
+        e.stopPropagation();
+        $(this).css({
+            // width: parseInt($(this).css('width')) * 0.8
+            width: function () {
+                return parseInt($(this).css('width')) * 0.8;
+            },
+            backgroundColor: function () {
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+        });
+
+    });
+
+    // $是jQuery的简写形式
+    // jQuery('div').css('border', '20px solid red');
+
+    // offset() 偏移
+    // 相对于页面的偏移
+    $(document).click(function () {
+        // 获取值
+        // console.log($('p').offset().left);
+        // console.log($('p').offset().top);
+        // 设置偏移
+        /*
+        $('p').offset({
+            left: 100,
+            top: 800
+        });
+        */
+
+        // i 下标, v 是 旧的 偏移对象
+        /*
+        $('p').offset(function (i, v) {
+            console.log(i, v);
+            v.left += 10;
+            v.top -= 10;
+            return v;
+        });
+        */
+
+
+        // position()
+        // 获取值
+        console.log($('#child').position().left);
+        console.log($('#child').position().top);
+
+        $('#child').css({
+            left: '+=20',
+            top: "+=20"
+        });
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+</script>
